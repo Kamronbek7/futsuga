@@ -1,0 +1,89 @@
+# Muhim sozlamalar
+config:
+	ADMINS:
+		112029910
+		199020009
+	# TOKEN="6909282290:AAGy8-7DDVW5kHZKMivh3bKbDK5-4vrqj8s"
+	# WEBHOOK="https://excample.com"
+	# DATABASE_FILE=None
+	INLINE=True
+	ADMIN_WARNINGS=True
+	TELEGRAM_LOG=True
+	LOGS:
+		"file.log"
+		telegram
+		admins
+
+# asosiy menu
+InlineButtons:
+	menu_btns:
+		"Salom" -> link: "https://t.me/InviProgUz" | "Xayr" -> callback_data: xayr
+		"X" -> callback_data: cancel
+
+	channels:
+		"$tr-kanal" -> CHANNELS
+		"✅ Tasdiqlash ✅" -> verify
+
+# KeyboardButtons
+KeyboardButtons:
+	KeyboardButton menu:
+		"Buyurtma" -> buyurtma
+		"Yordam" -> yordam
+
+# buyruqlar
+commands:
+	/start:
+		# subcom = 132
+		reply "Salom, botga xush kelibsiz **$user.first_name**!||1||Siz menga $subcom.1ni yubordingiz."
+		python:
+			tp, id = $subcom.split('-')
+			return tp, id
+		reply "$tp & $id"
+
+	/help "Bot yordamchi buyruqlari: /start, /help #help"
+
+	/menu:
+		reply "Tanlang:", reply_buttons=menu
+		set_reaction "❤️‍🔥"
+
+	/photo:
+		send_photo "https://example.com/image.jpg"
+
+	/about_bot:
+		reply subprocess.getoutput "echo Hello"
+
+# matnli xabarlar
+text:
+	~"Xayr": "Sizga ham xayr.", reply_buttons=menu_btns
+	"Salom": "Va alaykum salom!"
+
+# admins
+admin_panel:
+	pass
+
+# file handle
+files:
+	file: reply "Siz fayl yubordingiz"
+	photo: "Siz rasm yubordingiz"
+	document: forward $this_content
+	video: reply 'Siz video yubordingiz'
+
+# buttons
+keyboard_buttons_handler:
+	buyurtma: "Buyurtmani tanlash"
+	yordam: "Admin manzili:", reply_buttons: "Admin" url="https://t.me/inviprog"
+
+# callback_data
+inline_buttons_handler:
+	cancel: delete
+	salom: "Salom"
+	verify:
+		# Admin
+		is_admin: "Obuna bo'lishingiz shart emas!"
+		# obuna bo'lgan
+		is_subscriber: "Siz obuna bo'lgansiz"
+		# obuna bo'lmagan
+		not is_subscriber:
+			"Iltimos, majburiy kanallarga obuna bo'ling"
+			reply_buttons=channels
+	xayr: show_alert "Sizga ham xayr"

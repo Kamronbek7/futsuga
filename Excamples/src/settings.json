@@ -1,0 +1,47 @@
+{
+    "must": {
+        "main": "src/main.fga",
+        "settings_file": "src/settings.json",
+        "env": ".env/",
+        "token": ".env/.env",
+        "proj": "project.toml",
+        "database": {
+            "main_dir": "dbs/",
+            "users": "dbs/users.db"
+        },
+        "logs": {
+            "main_dir": "logs/",
+            "logs": "logs/data_$now$.log",
+            "main_log_file": "logs/main.log"
+        }
+    },
+    "main_datas": {
+        "panel_admin": "build/bot/admins.fsg",
+        "buttons": {
+            "kbuttons": "build/bot/btns/kbuttons.fsg",
+            "ibuttons": "build/bot/btns/ibuttons.fsg",
+            "bcommands": "build/bot/btns/bcommands.fsg",
+            "cbuttons": "build/bot/btns/cbuttons.fsg"
+        },
+
+        "handlers": {
+            "files": "build/files/files.fsg",
+            "text": "build/files/text.fsg",
+            "media": {
+                "photo": "build/media/photos.fsg",
+                "video": "build/media/video.fsg",
+                "audio": "build/media/audio.fsg"
+            },
+            "chat_handlers": {
+                "join_request": "build/requests"
+            },
+            "storage": {
+                "main_dir": "storage/",
+                "files": "storage/files/",
+                "videos": "storage/videos",
+                "photos": "storage/photos",
+                "others": "storage/others"
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+DATABASE:
+    FILE_TYPE: csv
+    MODULE_FILE: database.BKF

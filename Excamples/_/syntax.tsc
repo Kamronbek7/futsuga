@@ -1,0 +1,72 @@
+# muhim ma'lumotlar: adminlar, token, majburiy kanallar, databaza
+TOKEN "BOT_TOKEN" #12345678:jakmsmlalahudihfhfiLHSldjmk
+ADMIN_WARNINGS TRUE
+# ADMINS:
+# 	11020010892,
+# 	10200020023
+# CHANNELS:
+# 	@InviProgUz
+# WEBHOOK "https://excample.com"
+# DATABASE_FILE "db/database.db"
+
+# modullar bo'limi
+import subprocess
+
+# asosiy menu
+InlineKeyboardButton menu_btns:
+	"Salom" -> url="https://InviProgUz" | "Xayr" -> callback_data="xayr",
+	"X" -> callback_data="cancel"	
+
+InlineKeyboardButton channels:
+	"$tr-kanal" -> CHANNELS,
+	"✅ Tasdiqlash ✅" -> verify
+
+# buyruqlar
+/start:
+	# subcom = 132
+	reply "Salom, botga xush kelibsiz **$user.first_name**!"
+	reply "Siz menga $start.1'ni yubordingiz."
+
+/help: "Bot yordamchi buyruqlari: /start, /help"
+
+/menu:
+	reply: "Tanlang:",
+		buttons:
+			"Buyurtma" -> buyurtma,
+			"Yordam" -> yordam
+	set_reaction "❤️‍🔥"
+
+/photo:
+	send_photo "https://example.com/image.jpg"
+
+/about_me:
+	reply subprocess.getoutput "echo Hello"
+
+# matnli xabarlar
+~"Xayr".notdf:
+	reply: "Sizga ham xayr.", reply_markup=menu_btns
+
+~"Salom".notdf: "Va alaykum salom!"
+
+# admins
+admin_panel:
+	pass
+
+# buttons
+menu_buttons:
+	buyurtma: "Buyurtmani tanlash"
+	yordam:
+		reply: "Admin manzili:",
+			reply_markup: "Admin" url="https://inviprog"
+
+# callback_data
+callback_data:
+	cancel: delete
+	salom: "Salom"
+	verify:
+		is_subscriber: "Siz obuna bo'lgansiz"
+		not subscribed:
+			reply: "Iltimos, majburiy kanallarga obuna bo'ling",
+				reply_markup=channels
+		is_admin: "Obuna bo'lishingiz shart emas!"
+	xayr: show_alert "Sizga ham xayr"
