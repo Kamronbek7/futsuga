@@ -3,7 +3,7 @@ config:
 	ADMINS:
 		112029910
 		199020009
-	# TOKEN="6909282290:AAGy8-7DDVW5kHZKMivh3bKbDK5-4vrqj8s"
+	# TOKEN=.env
 	# WEBHOOK="https://excample.com"
 	# DATABASE_FILE=None
 	INLINE=True
