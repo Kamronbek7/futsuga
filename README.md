@@ -1,2 +1,2 @@
 # futsuga
-New language mainli low code abd no-code
+New language based low code abd no-code
