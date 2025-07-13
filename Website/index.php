@@ -1,1 +1,5 @@
-<?= "This is Futsuga's website" ?>
+<?php
+
+require('includes/menu.php');
+
+?>
