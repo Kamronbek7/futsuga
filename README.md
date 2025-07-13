@@ -1,4 +1,4 @@
-[O'zbek tili uchun shu havolaga bosing] (README.uz.md)
+[O'zbek tili uchun shu havolaga bosing](README.uz.md)
 
 # Futsuga 🧠✨
 New language based low code and no-code. This language created by t.me/InviProgUz.
