@@ -1,4 +1,4 @@
-(Follow this link for English)[README.md]
+[Follow this link for English](README.md)
 
 # Futsuga 🧠✨
 
