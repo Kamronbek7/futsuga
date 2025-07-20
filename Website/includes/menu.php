@@ -1,16 +1,18 @@
 <?php
 $menu_height = '30px';
+
+$h1_hover_color1 = 'blue';
+$h1_hover_color2 = 'purple';
+
+$h1_color1 = '#000055';
+$h1_color2 = 'blue';
 ?>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
     .menu {
-        background-color: #1b1b1b;
+        /* background-color: #1b1b1b; */
+        background: linear-gradient(to right, <?= $h1_color1 . ',' . $h1_color2 ?>);
         width: 100%;
-        /* border-radius: 20px; */
         height: <?= $menu_height ?>;
     }
     .menu a {
@@ -21,18 +23,22 @@ $menu_height = '30px';
         float: left;
         height: <?= $menu_height ?>;
         border: 0px none;
-        background-color: #1b1b1b;
+        /* background-color: #1b1b1b; */
+        background: linear-gradient(to right, <?= $h1_color1 . ',' . $h1_color2 ?>);
     }
     .menu a:hover {
-        background: linear-gradient(to right, blue, red);
+        background: linear-gradient(to right, <?= $h1_hover_color1 ?>, <?= $h1_hover_color2 ?>);
+    }
+    a.r:hover {
+        background: linear-gradient(to left, <?= $h1_hover_color1 ?>, <?= $h1_hover_color2 ?>);
     }
 </style>
 
 <nav class="menu">
   <a href="/">🏠 Home</a>
-  <a href="/builder.php">🔧 Builder</a>
-  <a href="/guide.php">📘 Guide</a>
-  <a href="/examples.php">📂 Examples</a>
-  <a href="/download.php">⬇️ Download</a>
-  <a href="/faq.php">❓ FAQ</a>
+  <a href="/pages/builder.php" class="r">🔧 Builder</a>
+  <a href="/pages/guide.php">📘 Guide</a>
+  <a href="/pages/examples.php" class="r">📂 Examples</a>
+  <a href="/pages/download.php">⬇️ Download</a>
+  <a href="/pages/faq.php" class="r">❓ FAQ</a>
 </nav>

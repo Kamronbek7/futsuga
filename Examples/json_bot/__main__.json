@@ -1,0 +1,15 @@
+{
+    "config": {
+        "TOKEN": ".env"
+    },
+    "commands": {
+        "/start": {
+            "reply": "Salom",
+            "send_photo": {
+                "file": "../assets/imgs/futsuga.png",
+                "caption": "salom"
+            }
+        },
+        "/help": "Yordam"
+    }
+}

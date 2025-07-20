@@ -1,5 +1,0 @@
-TOKEN "1234567:ABCDEFGHIJklmnopqsrstuvxyz"
-
-set_commands:
-    /start - Yangilash
-    /help - Yordam olish
