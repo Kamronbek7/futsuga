@@ -1,0 +1,106 @@
+Yaxshi, katalog tuzilmasi juda keng va puxta. Ammo uni yanada **strukturaviy, modulli va ishlashga qulayroq** qilish uchun quyidagilarni qo‘shish yoki o‘zgartirishni tavsiya qilaman:
+
+---
+
+### ✅ **1. `Excamples/` ni `Examples/` deb tuzatish**
+
+> Typo bor: "Excamples" → "Examples" bo‘lishi kerak.
+
+---
+
+### ✅ **2. `docs/` papkasi alohida ajratsin**
+
+> `Futsuga/documentation/` ichidagi fayllarni ko‘proq umumiy foydalanish uchun `docs/` nomli alohida katalogga ajratsang yaxshi bo‘ladi (GitHub Pages bilan integratsiya osonlashadi).
+
+---
+
+### ✅ **3. `cli/`, `core/`, `gui/` kabi lozim modullarni modul qilib ajratish**
+
+* `fsg/`, `futsuga/`, `langs/`, `settings/`, `smart_builder/` bo‘linmasi chalkash bo‘lishi mumkin. Quyidagi tuzilma sodda va lozim holatlarda kuchli bo‘ladi:
+
+```
+futsuga/
+├── core/               # Parser, Translator, DSL funksiyalar
+├── cli/                # Komandali ishga tushirish
+├── gui/                # Desktop GUI (customtkinter)
+├── compiler/           # .fsg → .json → .py
+├── runtime/            # Interpreter, validator
+├── languages/          # Tarjimasi, .db
+└── settings/           # Global configs, datas
+```
+
+---
+
+### ✅ **4. `tests/` katalogi yo‘q**
+
+> 🔧 Qo‘shilishi shart. Masalan:
+
+```
+tests/
+├── test_parser.py
+├── test_translator.py
+└── test_integration.py
+```
+
+---
+
+### ✅ **5. `Website/` → `web/` yoki `frontend/`**
+
+> PHP asosidagi web saytni umumiy nom bilan berish tavsiya qilinadi:
+
+```
+web/
+├── api/
+├── assets/
+├── includes/
+├── pages/
+└── index.php
+```
+
+---
+
+### ✅ **6. `bin/` yoki `dist/` katalogi yo‘q**
+
+> Kompilyatsiya qilingan `fsg.exe`, `futsuga.exe` fayllarni `bin/` yoki `dist/` ichida saqlash professional holat:
+
+```
+bin/
+├── futsuga.exe
+└── fsg.exe
+```
+
+---
+
+### ✅ **7. `.github/` katalogi qo‘shilsa yaxshi bo‘ladi**
+
+> Contributing, bug\_report, pull\_request templates
+
+```
+.github/
+├── ISSUE_TEMPLATE/
+│   ├── bug_report.md
+│   └── feature_request.md
+└── PULL_REQUEST_TEMPLATE.md
+```
+
+---
+
+### ✅ **8. `installer/` katalogi**
+
+> DesktopApps uchun setup fayllar, .deb/.msi/.sh fayllarni shu yerda saqlash.
+
+---
+
+### ✅ **9. `CHANGELOG.md` fayli**
+
+> Har bir versiyada nimalar o‘zgargani yozilishi kerak. GitHub Releases bilan integratsiya qilish uchun zarur.
+
+---
+
+### ✅ **10. `.env.example` fayl**
+
+> API token, webhook url, db joylashuvi kabi sozlamalarning misol fayli.
+
+---
+
+Agar xohlasang, bu tuzilma asosida **`README.md` uchun avtomatik loyiha tavsifi** yoki `setup.py` faylni ham yozib beraman. Shu asosda davom ettiraylikmi?

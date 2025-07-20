@@ -2,18 +2,92 @@
 
 # Futsuga 🧠✨
 
-**Futsuga** — bu Telegram botlar yaratish uchun mo‘ljallangan o‘ziga xos (DSL) domen-ga xos dasturlash tili. U dasturlashdan yiroq foydalanuvchilar uchun oddiy va tushunarli sintaksis orqali kuchli botlar yaratishga imkon beradi.
+**Futsuga** — bu Telegram botlar yaratish uchun mo‘ljallangan o‘ziga xos (DSL) dasturlash tili. U yordamida dasturlashdan yiroq foydalanuvchilar ham kuchli botlar yaratishga qodir.
 
 ---
 
-## ✨ Nega Futsuga?
+## ✨ Nega Futsuga? U hamma uchunmi?
 
-- ✅ **Sodda sintaksis** — dasturlash tajribasisiz ham ishlatish mumkin
-- 🧠 **No-code / low-code** imkoniyatlari
-- 🔐 **Mualliflik himoyasi (read-only, run-only, imzo, shifrlash)**
-- 🧩 **Telegram inline va reply tugmalarni** deklarativ e'lon qilish imkoniyati
-- 🛠️ **Python yoki Rust backend’ga kompilyatsiya qilish mumkin**
-- 🌐 **Web editor (drag & drop UI)** va Desktop uchun IDLE (customTkinter) ishlab chiqilmoqda
+### Dasturchi bo'lmaganlar uchun ham
+- 💵 Botni ishlab chiqish mutlaqo **bepul**
+- ✅ **Sodda tuzilish** — dasturlash tajribasi shart emas
+- 📱 **Smartfon**da bot tuzish. **Telegram botimiz, mini-ilovamiz** yoki **veb-saytimizda** bot yarating
+- 💸 **Kam obunachili** botingizda ham **reklama**ni yoqib, **pul ishlang**
+- 🧠 **No-code / low-code** - Kod yozish shart emas! Faqat **oling** va **qo'ying**. Istasangiz, kod yozing
+- 🔐 **Mualliflik himoyasi** (read-only, run-only, imzo, shifrlash)
+- 🤖 Bot yozishda **yordam beruvchi** qurilmangizda ~~internet orqali~~ (internetsiz) ishlaydigan sodda va yengil **bot** (kompyuterda). **Telefon** uchun [telegram bot](https://t.me/futsugabot)
+
+### Dasturchilar uchun ham
+- 📚 **GUI + CLI + Veb UI**'ga ega **Paket va loyiha menejeri** orqali **paket** va **loyihalar**ingizni **oson** va **tartibli** boshqaring
+- 🛠️ **Python, shell (sodda botlar uchun) va Rust**ga o'giring yoki Rust orqali **kompilyatsiya qiling**
+- 📅 **JSON** orqali telegram bot tuzing
+- 📝 Fustuga ichida **Python** va **PHP** kodlaridan foydalaning
+- 🌍 **O'zbek** va **ingliz** tillaridagi interfeys, ogohlantirish va xatoliklar
+- ⛓️‍💥 Oson **debugging**.
+- 💻 **GUI + CLI + Veb UI**'ga ega Desktop ilova, paket va loyiha menejeri
+
+---
+
+## Kelajakdagi rejalar
+- ⚒️ Bir bosish bilan **deploy**
+- 💫 Rust / C++ orqali **yuqori tezlik** va **kamroq resurs sarfi**
+- 💵 Pulli, tasdiqlangan, bepul, ochiq **kutubxonalar**
+
+---
+## 📜 Litsenziya
+
+Ushbu loyiha **Futsuga License v1.0** ostida litsenziyalangan.
+
+- ✅ Shaxsiy, ta'lim va ichki notijorat maqsadlarda foydalanish uchun bepul.
+- ✅ **Telegram bot funksiyasi asosiy xususiyat bo'lmasa**, tijorat loyihalarida **qo'llab-quvvatlovchi komponent** sifatida foydalanish mumkin.
+- ❌ Futsuga-ga o'xshash platformalar yoki Telegram bot quruvchilarni yaratish uchun foydalanish mumkin emas.
+
+📬 Biznes savollar uchun: kamronbek@example.com
+---
+
+## Manba havolalar
+| Asosiy | O'rganish | Blog |
+| [Veb-sayt](https://futsuga.uz) | [Qo'lanma & kitoblar](https://futsuga.uz/guide) | [Telegram](https://t.me/futsuga) |
+| [Yuklab olish](https://futsuga.uz/download) | [Dasturchi bo'lmaganlar uchun](https://futsuga.uz/guide/for-scratch) | [Youtube](https://www.youtube.com/@futsuga) |
+| [FSGX paket menejeri](https://futsuga.uz/fsgx) | [Dasturchilar uchun](https://futsuga.uz/guide/for-coders) | [Instagram](https://www.instagram.com) |
+
+[VS Code uchun Extention'lar]()
+
+---
+
+## ⚙️ O'rnatish
+
+### 🐧 Linux (Debian/Ubuntu oilasi uchun)
+```bash
+sudo apt install futsuga
+```
+
+### Boshqa tizimlar
+| Tizim | Havola |
+| Windows | [havola](https://futsuga.uz/download/windows) |
+| Mac OS | [havola](https://futsuga.uz/download/macos) |
+
+### Rasmlar
+(None)
+
+---
+
+## Futsuga'dan rasmlar
+### Editor
+- CLI (qurilma terminalidagi interfeys) kodni ishga tushiruvchi
+- GUI (foydalanuvchining grafik interfeysi)ga ega IDLE (Integrallashgan o'rganish va dasturlash muhiti)
+- Veb UI IDLE (localhost orqali)
+
+### Paket va loyiha menejeri
+- CLI (fsgx)
+- GUI'ga ega Desktop paket va loyiha menejeri (fsgx)
+- Veb UI paket menejeri (localhost orqali)
+
+### VS Code uchun Futsuga extention'lari
+
+### Kod yozish jarayoni
+
+### JSON orqali bot yozish
 
 ---
 
@@ -21,10 +95,11 @@
 
 | Fayl turi | Tavsif |
 |----------|--------|
-| `.fsg` | Ochiq manba Futsuga script |
+| `.fga` | Ochiq manba Futsuga script |
+| `.fsg` | Kutubxona fayli |
 | `.fsgz` | GZip qilingan va shifrlangan script |
 | `.fcr` | Faqat bajarish uchun mo‘ljallangan (run-only) fayl |
-| `.fsconfig` | Maxfiy sozlamalar (TOKEN, ID, permissions) |
+| `.fsconf` | Maxfiy sozlamalar (TOKEN, ID, permissions) |
 
 ---
 
@@ -39,16 +114,27 @@ Futsuga sizga `PDF` fayllardagi kabi mualliflik nazoratini beradi:
 
 ---
 
-## ⚙️ Misol: Oddiy .fsg fayl
+## ⚙️ Misol: Oddiy .fga fayl
 
 ```futsuga
-TOKEN $ENV.TOKEN
-INLINE=True
-
-InlineButton main:
-    "Boshlash" -> callback_data: start
-    "Yordam" -> callback_data: help
-
-/start:
-    reply "Assalomu alaykum, botga xush kelibsiz!"
+commands:
+    /start: "Assalomu alaykum, botga xush kelibsiz!"
 ```
+
+---
+
+## Takliflar
+Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi en yoki uz ko'rinishida fayl nomida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. SHuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
+
+Tushunganingiz uchun rahmat.
+
+---
+
+## "Futsuga"ning ma'nosi nima?
+Ochiq yozaman: hech narsa. Shunchaki, "Fustuga" (Boshqa nomlar band ekan).
+Ushbu nom Yapon yoki Xitoy tiliga aloqador emas.
+
+---
+
+## Hissa qo'shish
+Agar loyiha sizga yoqqan bo'lsa, unga ijtimoiy tarmoqlardagi sahifalarimizga obuna bo'lish va yulduzcha bosish orqali loyiha rivojiga hissa qo'shishingiz mumkin. Ayniqsa, telegram guruhimiz o'zbek va ingliz tillarida faoliyat yuritadi. Ingliz tilidagi ma'lumotni o'qish uchun [guruhimiz](https://t.me/futsuga)dagi "(en)" deb yozilgan mavzuga kiring. Qolganlari o'zbek tilida.
