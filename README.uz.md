@@ -101,6 +101,15 @@ sudo apt install futsuga
 | `.fcr` | Faqat bajarish uchun mo‘ljallangan (run-only) fayl |
 | `.fsconf` | Maxfiy sozlamalar (TOKEN, ID, permissions) |
 
+| Kengaytma | Turi           | Tavsif                              |
+| --------- | -------------- | ----------------------------------- |
+| `.fga`    | Manba          | Ochiq matnli skript                 |
+| `.fsg`    | Kutubxona      | Modul yoki funksiya to‘plami        |
+| `.fsgz`   | Shifrlangan    | GZip + shifrlangan versiya          |
+| `.fcr`    | Run-only       | Faqat bajarish uchun                |
+| `.fsconf` | Konfiguratsiya | Tokenlar, ID’lar, maxfiy sozlamalar |
+
+
 ---
 
 ## 🔑 Himoya tizimi (DRM-like)
