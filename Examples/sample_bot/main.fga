@@ -1,9 +1,9 @@
 # Muhim sozlamalar
-config:
+init:
 	ADMINS:
 		112029910
 		199020009
-	# TOKEN=env
+	# TOKEN='.env'
 	# WEBHOOK="https://excample.com"
 	# DATABASE_FILE=None
 	INLINE=True
@@ -13,6 +13,9 @@ config:
 		"file.log"
 		telegram
 		admins
+
+imports:
+	futsuga_ads
 
 # asosiy menu
 InlineButtons:
@@ -34,27 +37,27 @@ KeyboardButtons:
 commands:
 	/start:
 		# subcom = 132
-		reply "Salom, botga xush kelibsiz **$user.first_name**!||1||Siz menga $subcom.1ni yubordingiz."
+		reply: "Salom, botga xush kelibsiz **$user.first_name**!||1||Siz menga $subcom.1ni yubordingiz."
 		python:
 			tp, id = $subcom.split('-')
 			return tp, id
-		reply "$tp & $id"
+		reply: "$tp & $id"
 
-	/help "Bot yordamchi buyruqlari: /start, /help #help"
+	/help: "Bot yordamchi buyruqlari: /start, /help: #help"
 
 	/menu:
-		reply "Tanlang:", reply_buttons=menu
-		set_reaction "❤️‍🔥"
+		reply: "Tanlang:", reply:_buttons=menu
+		set_reaction: "❤️‍🔥"
 
 	/photo:
-		send_photo "https://example.com/image.jpg"
+		send_photo: "https://example.com/image.jpg"
 
 	/about_bot:
-		reply subprocess.getoutput "echo Hello"
+		reply: subprocess.getoutput "echo Hello"
 
 # matnli xabarlar
 text:
-	~"Xayr": "Sizga ham xayr.", reply_buttons=menu_btns
+	~"Xayr": "Sizga ham xayr.", reply:_buttons=menu_btns
 	"Salom": "Va alaykum salom!"
 
 # admins
@@ -63,27 +66,30 @@ admin_panel:
 
 # file handle
 files:
-	file: reply "Siz fayl yubordingiz"
+	file: reply: "Siz fayl yubordingiz"
 	photo: "Siz rasm yubordingiz"
-	document: forward $this_content
-	video: reply 'Siz video yubordingiz'
+	document: forward: $this_content
+	video: reply: 'Siz video yubordingiz'
 
 # buttons
 keyboard_buttons_handler:
 	buyurtma: "Buyurtmani tanlash"
-	yordam: "Admin manzili:", reply_buttons: "Admin" url="https://t.me/inviprog"
+	yordam: "Admin manzili:", buttons: "Admin" url="https://t.me/inviprog"
+/*
+izoh
+*/
 
 # callback_data
-inline_buttons_handler:
+inline_buttons_handler: # bu yerda izoh
 	cancel: delete
 	salom: "Salom"
 	verify:
 		# Admin
-		is_admin: "Obuna bo'lishingiz shart emas!"
+		is_admin: 'Obuna bo\'lishingiz /* mcn */ shart emas!'
 		# obuna bo'lgan
 		is_subscriber: "Siz obuna bo'lgansiz"
 		# obuna bo'lmagan
 		not is_subscriber:
-			"Iltimos, majburiy kanallarga obuna bo'ling"
-			reply_buttons=channels
+			"Iltimos, majburiy kanallarga obuna bo'ling /*abc*/"
+			buttons: channels
 	xayr: show_alert "Sizga ham xayr"

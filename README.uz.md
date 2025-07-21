@@ -2,13 +2,13 @@
 
 # Futsuga 🧠✨
 
-**Futsuga** — bu Telegram botlar yaratish uchun mo‘ljallangan o‘ziga xos (DSL) dasturlash tili. U yordamida dasturlashdan yiroq foydalanuvchilar ham kuchli botlar yaratishga qodir.
+**Futsuga** — Telegram botlar yaratish uchun mo‘ljallangan sodda dasturlash tili. U yordamida dasturlashdan yiroq foydalanuvchilar ham kuchli botlar yaratishga qodir.
 
 ---
 
-## ✨ Nega Futsuga? U hamma uchunmi?
+## ✨ Futsuga kimlar uchun?
 
-### Dasturchi bo'lmaganlar uchun ham
+### Dasturchi bo'lmaganlar uchun
 - 💵 Botni ishlab chiqish mutlaqo **bepul**
 - ✅ **Sodda tuzilish** — dasturlash tajribasi shart emas
 - 📱 **Smartfon**da bot tuzish. **Telegram botimiz, mini-ilovamiz** yoki **veb-saytimizda** bot yarating
@@ -17,7 +17,7 @@
 - 🔐 **Mualliflik himoyasi** (read-only, run-only, imzo, shifrlash)
 - 🤖 Bot yozishda **yordam beruvchi** qurilmangizda ~~internet orqali~~ (internetsiz) ishlaydigan sodda va yengil **bot** (kompyuterda). **Telefon** uchun [telegram bot](https://t.me/futsugabot)
 
-### Dasturchilar uchun ham
+### Dasturchilar uchun
 - 📚 **GUI + CLI + Veb UI**'ga ega **Paket va loyiha menejeri** orqali **paket** va **loyihalar**ingizni **oson** va **tartibli** boshqaring
 - 🛠️ **Python, shell (sodda botlar uchun) va Rust**ga o'giring yoki Rust orqali **kompilyatsiya qiling**
 - 📅 **JSON** orqali telegram bot tuzing
@@ -38,15 +38,15 @@
 
 Ushbu loyiha **Futsuga License v1.0** ostida litsenziyalangan.
 
-- ✅ Shaxsiy, ta'lim va ichki notijorat maqsadlarda foydalanish uchun bepul.
-- ✅ **Telegram bot funksiyasi asosiy xususiyat bo'lmasa**, tijorat loyihalarida **qo'llab-quvvatlovchi komponent** sifatida foydalanish mumkin.
-- ❌ Futsuga-ga o'xshash platformalar yoki Telegram bot quruvchilarni yaratish uchun foydalanish mumkin emas.
+- ✅ Shaxsiy, ta'lim va ichki notijorat, tijorat (futsuga'ning aynan nusxasi bo'lmagan) maqsadlarda foydalanish uchun bepul.
+- ❌ Futsuga'ga o'xshash platformalar yaratish uchun foydalanish mumkin emas.
 
-📬 Biznes savollar uchun: kamronbek@example.com
+📬 Biznes savollar uchun: kamronbekqochqorov1@gmail.com
 ---
 
 ## Manba havolalar
 | Asosiy | O'rganish | Blog |
+|---------|----------|------|
 | [Veb-sayt](https://futsuga.uz) | [Qo'lanma & kitoblar](https://futsuga.uz/guide) | [Telegram](https://t.me/futsuga) |
 | [Yuklab olish](https://futsuga.uz/download) | [Dasturchi bo'lmaganlar uchun](https://futsuga.uz/guide/for-scratch) | [Youtube](https://www.youtube.com/@futsuga) |
 | [FSGX paket menejeri](https://futsuga.uz/fsgx) | [Dasturchilar uchun](https://futsuga.uz/guide/for-coders) | [Instagram](https://www.instagram.com) |
@@ -64,6 +64,7 @@ sudo apt install futsuga
 
 ### Boshqa tizimlar
 | Tizim | Havola |
+|--------|--------|
 | Windows | [havola](https://futsuga.uz/download/windows) |
 | Mac OS | [havola](https://futsuga.uz/download/macos) |
 
@@ -73,7 +74,7 @@ sudo apt install futsuga
 ---
 
 ## Futsuga'dan rasmlar
-### Editor
+### Muharrir
 - CLI (qurilma terminalidagi interfeys) kodni ishga tushiruvchi
 - GUI (foydalanuvchining grafik interfeysi)ga ega IDLE (Integrallashgan o'rganish va dasturlash muhiti)
 - Veb UI IDLE (localhost orqali)
@@ -133,17 +134,17 @@ commands:
 ---
 
 ## Takliflar
-Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi en yoki uz ko'rinishida fayl nomida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. SHuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
+Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi `en` yoki `uz` ko'rinishida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. SHuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
 
 Tushunganingiz uchun rahmat.
 
 ---
 
 ## "Futsuga"ning ma'nosi nima?
-Ochiq yozaman: hech narsa. Shunchaki, "Fustuga" (Boshqa nomlar band ekan).
+Ochiq yozaman: hech narsa. Shunchaki, "**Fustuga**" (Boshqa nomlar band ekan).
 Ushbu nom Yapon yoki Xitoy tiliga aloqador emas.
 
 ---
 
 ## Hissa qo'shish
-Agar loyiha sizga yoqqan bo'lsa, unga ijtimoiy tarmoqlardagi sahifalarimizga obuna bo'lish va yulduzcha bosish orqali loyiha rivojiga hissa qo'shishingiz mumkin. Ayniqsa, telegram guruhimiz o'zbek va ingliz tillarida faoliyat yuritadi. Ingliz tilidagi ma'lumotni o'qish uchun [guruhimiz](https://t.me/futsuga)dagi "(en)" deb yozilgan mavzuga kiring. Qolganlari o'zbek tilida.
+Agar loyiha sizga yoqqan bo'lsa, unga ijtimoiy tarmoqlardagi sahifalarimizga obuna bo'lish va yulduzcha bosish orqali loyiha rivojiga hissa qo'shishingiz mumkin. Ayniqsa, telegram guruhimiz o'zbek va ingliz tillarida faoliyat yuritadi. Ingliz tilidagi ma'lumotni o'qish uchun [telegramdagi ommaviy guruhimiz](https://t.me/futsuga)dagi "(en)" so'zi bor bo'lgan ixtiyoriy mavzuga kiring. Qolganlari o'zbek tilida.
