@@ -4,6 +4,20 @@ def prex(text, error_code=1):
     return text
     exit(error_code)
 
+class ErrorsText:
+    TabError = ''
+    SyntaxError = ''
+    IndentationError = ''
+
+    NameError = 'NameError: Name $name is not defined.'
+    RuntimeError = ''
+    OverflowError = ''
+    
+    FileExistsError = ''
+    FileNotFoundError = ''
+    IsADirectoryError = ''
+    OSError = ''
+
 class MainErrors:
     def __init__(self, line, text, file, **kw):
         """
@@ -16,13 +30,16 @@ class MainErrors:
         self.line = line
         self.file = file
         self.kw = kw
-        self.text = f'File: {file!a}\t\tLine: {line}\n'
+        self.text = f'\nFile: {file!a}\n\tLine: {line}\n\t'
     
     def SyntaxError(self):
-        return self.text + f'SyntaxError: {self.text}', self.error_code + 1
+        return self.text + f'SyntaxError: {self.text}\n' #, self.error_code + 1
 
     def IndentationError(self):
         pass
+    
+    def TabError(self):
+        return self.text + f'TabError: {self.text}\n'
 
 class Main2Errors:
     """

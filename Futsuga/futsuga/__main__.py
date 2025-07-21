@@ -21,15 +21,35 @@ from datas import *
 
 # Main script
 
-def help(arg=None):
-    if arg == None: print(f'''{'RUN':^30}
-{'<file>':<25}Run <file>
-{"-b":<25}Run in background
-{'-s <log_file_name>':<25}Write log any file (optional: <project_name>.log)
+ln = 25
+cn = '^30'
 
-{'ABOUT':^30}
-{'-v':<25}version
-{'--py-version':<25}python's version
+def help(arg=None):
+    if arg == None: print(f'''{'RUN':{cn}}
+{'<file>':{ln}}Run <file>
+{"-b":{ln}}Run in background
+{'-s <log_file_name>':{ln}}Write log any file (optional: <project_name>.log)
+
+{'TRANSLATE':{cn}}
+{'--sh':{ln}}translate to .sh  (shell)\tfile. Recommended for little bots
+{'--py':{ln}}translate to .py  (Python)\tfile
+{'--rs':{ln}}translate to .rs  (Rust)\tfile
+{'--cpp':{ln}}translate to .cpp (C++)\tfile
+
+{'ABOUT':{cn}}
+{'-v':{ln}}version
+{'--py-version':{ln}}python's version
+
+{'SETTINGS':{cn}}
+{'--langs':{ln}}Show\tall\tlanguages
+{'--set-lang':{ln}}Set\tdefault\tlanguage
+{"--lang":{ln}}Show\tnow\tlanguage
+
+CHANGE LOCALHOSTS ADDRESSES
+{'--set-editor':{ln}}For editor.\t\t\t\tDefault: http://0.0.0.0:1
+{'--set-packs':{ln}}For package and project manager.\tDefault: http://0.0.0.0:7
+{'--set-minibot':{ln}}For helper bot.\t\t\tDefault: http://0.0.0.0:3
+{'--set-'}
 
 '''.rstrip())
 
@@ -48,9 +68,11 @@ if __name__ == '__main__':
 
         elif func == '-v': print(datas.version)
         elif func == '--py-version': print(datas.py_version)
-        elif (func == '-h') or (func == '--help'): help()
+        elif (func == '-h') or (func == '--help')or (func == '--h')or (func == '/?')or (func == '?'): help()
+
         elif func == '--langs': print(datas.langs)
         elif func == '--now-lang': print(datas.default_lang)
+        
         elif func == '--exe-file': print(executable)
 
         elif func.split('.')[-1] == 'fga':

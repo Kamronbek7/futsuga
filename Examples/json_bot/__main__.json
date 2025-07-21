@@ -1,15 +1,83 @@
 {
     "config": {
-        "TOKEN": ".env"
-    },
-    "commands": {
-        "/start": {
-            "reply": "Salom",
-            "send_photo": {
-                "file": "../assets/imgs/futsuga.png",
-                "caption": "salom"
+        "ADMINS": {
+            "112029910": null,
+            "199020009": null,
+            "INLINE": "True",
+            "ADMIN_WARNINGS": "True",
+            "TELEGRAM_LOG": "True",
+            "LOGS": {
+                "\"file.log\"": null,
+                "telegram": null,
+                "admins": null
             }
         },
-        "/help": "Yordam"
+        "InlineButtons": {
+            "menu_btns": {
+                "\"Salom\"": "link: \"https://t.me/InviProgUz\" | \"Xayr\" -> callback_data: xayr",
+                "\"X\"": "callback_data: cancel",
+                "channels": {
+                    "\"$tr-kanal\"": "CHANNELS",
+                    "\"✅ Tasdiqlash ✅\"": "verify"
+                }
+            },
+            "KeyboardButtons": {
+                "KeyboardButton menu": {
+                    "\"Buyurtma\"": "buyurtma",
+                    "\"Yordam\"": "yordam"
+                },
+                "commands": {
+                    "/start": {
+                        "reply \"Salom, botga xush kelibsiz **$user.first_name**!||1||Siz menga $subcom.1ni yubordingiz.\"": null,
+                        "python": {
+                            "tp, id": "$subcom.split('-')",
+                            "return tp, id": null,
+                            "reply \"$tp & $id\"": null,
+                            "/help \"Bot yordamchi buyruqlari": "/start, /help #help\""
+                        },
+                        "/menu": {
+                            "reply \"Tanlang": "\", reply_buttons=menu",
+                            "set_reaction \"❤️‍🔥\"": null,
+                            "/photo": {
+                                "send_photo \"https": "//example.com/image.jpg\"",
+                                "/about_bot": {
+                                    "reply subprocess.getoutput \"echo Hello\"": null
+                                }
+                            }
+                        }
+                    },
+                    "text": {
+                        "~\"Xayr\"": "\"Sizga ham xayr.\", reply_buttons=menu_btns",
+                        "\"Salom\": \"Va alaykum salom!\"": null,
+                        "admin_panel": {
+                            "pass": null,
+                            "files": {
+                                "file": "reply \"Siz fayl yubordingiz\"",
+                                "photo": "\"Siz rasm yubordingiz\"",
+                                "document": "forward $this_content",
+                                "video": "reply 'Siz video yubordingiz'",
+                                "keyboard_buttons_handler": {
+                                    "buyurtma": "\"Buyurtmani tanlash\"",
+                                    "yordam": "\"Admin manzili:\", reply_buttons: \"Admin\" url=\"https://t.me/inviprog\"",
+                                    "inline_buttons_handler": {
+                                        "cancel": "delete",
+                                        "salom": "\"Salom\"",
+                                        "verify": {
+                                            "is_admin": "\"Obuna bo'lishingiz shart emas!\"",
+                                            "is_subscriber": "\"Siz obuna bo'lgansiz\"",
+                                            "not is_subscriber": {
+                                                "\"Iltimos, majburiy kanallarga obuna bo'ling\"": null,
+                                                "reply_buttons": "channels",
+                                                "xayr": "show_alert \"Sizga ham xayr\""
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
