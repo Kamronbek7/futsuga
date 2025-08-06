@@ -156,6 +156,34 @@ def remove_comments(input_path):
 
     return convert_lists(result)'''
 
+class main_parser:
+    def __init__(self, code):
+        self.code = code
+        self.code_list = code.split('\n')
+        self.tpl = ('    ', '\t', '  ')
+        self.init = {
+            "TOKEN": ".env",
+            "ADMINS": [],
+            "INLINE": True,
+            "ADMIN_WARNINGS": True,
+            "LOGS": {
+                "file": "file.log",
+                "telegram": "ADMINS"
+            },
+            "DATABASE": "dbs/users",
+            "WEBHOOK": False,
+            "TASK": False
+        }
+    def get_init(self):
+        code: dict = {}
+        for i in self.code_list:
+            i = i[1:]
+            if i.strip() == '':
+                return code
+            elif i[0] in self.tpl and i[1] in self.tpl:
+                pass  # TODO: Implement logic here
+                
+
 def parser2(filename):
     code = remove_comments(filename)
     tpl = ('    ', '\t', '  ')
@@ -174,6 +202,8 @@ def parser2(filename):
             "TASK": False
         },
         "imports": [],
+        "InlineButtons": [],
+        "KeyboardButtons": [],
         "commands": {},
         "text": {},
         "admin_panel": {
@@ -218,8 +248,9 @@ def parser2(filename):
 file = r"D:\Files\1_Projects\Futsuga\Examples\sample_bot\main.fga"
 # path = r"D:\Files\1_Projects\Futsuga/"
 # remove_comments(file, 'main_no_comments.fga')
-parsed = parser2(file)#, path)
-print(f'{color.Fore.CYAN}{parsed}')
+# parsed = parser2(file)#, path)
+# print(f'{color.Fore.CYAN}{parsed}')
+print(remove_comments(file))
 
 # with open("abc2.json", "w", encoding="utf-8") as f:
 #     json.dump(parsed, f, ensure_ascii=False, indent=4)

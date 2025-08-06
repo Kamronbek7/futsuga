@@ -6,9 +6,9 @@ init:
 	# TOKEN='.env'
 	# WEBHOOK="https://excample.com"
 	# DATABASE_FILE=None
-	INLINE=True
-	ADMIN_WARNINGS=True
-	TELEGRAM_LOG=True
+	INLINE: True
+	ADMIN_WARNINGS: True
+	TELEGRAM_LOG: True
 	LOGS:
 		"file.log"
 		telegram
@@ -16,22 +16,24 @@ init:
 
 imports:
 	futsuga_ads
+	admin_panel
 
 # asosiy menu
 InlineButtons:
 	menu_btns:
-		"Salom" -> link: "https://t.me/InviProgUz" | "Xayr" -> callback_data: xayr
-		"X" -> callback_data: cancel
+		link: "https://t.me/InviProgUz" -> "Salom" | xayr: callback_data -> "Xayr"
+		copy_button: '639' -> 'Nusxa olish'
+		cancel: callback_data -> 'X'
 
 	channels:
-		"$tr-kanal" -> CHANNELS
-		"✅ Tasdiqlash ✅" -> verify
+		CHANNELS -> "$tr-kanal"
+		verify -> "✅ Tasdiqlash ✅"
 
 # KeyboardButtons
 KeyboardButtons:
 	KeyboardButton menu:
-		"Buyurtma" -> buyurtma
-		"Yordam" -> yordam
+		buyurtma: "Buyurtma" | now: "Balans"
+		yordam: "Yordam"
 
 # buyruqlar
 commands:
@@ -46,18 +48,23 @@ commands:
 	/help: "Bot yordamchi buyruqlari: /start, /help: #help"
 
 	/menu:
-		reply: "Tanlang:", reply:_buttons=menu
+		reply:
+			"Tanlang:",
+			buttons: menu
 		set_reaction: "❤️‍🔥"
 
 	/photo:
 		send_photo: "https://example.com/image.jpg"
 
 	/about_bot:
-		reply: subprocess.getoutput "echo Hello"
+		reply:
+			subprocess.getoutput "echo Hello"
 
 # matnli xabarlar
 text:
-	~"Xayr": "Sizga ham xayr.", reply:_buttons=menu_btns
+	~"Xayr":
+		"Sizga ham xayr.",
+		buttons: menu_btns
 	"Salom": "Va alaykum salom!"
 
 # admins
@@ -74,7 +81,13 @@ files:
 # buttons
 keyboard_buttons_handler:
 	buyurtma: "Buyurtmani tanlash"
-	yordam: "Admin manzili:", buttons: "Admin" url="https://t.me/inviprog"
+	yordam:
+		"Admin manzili:"
+		buttons:
+			"Admin"
+			# type: url
+			url: "https://t.me/inviprog"
+
 /*
 izoh
 */
@@ -92,4 +105,4 @@ inline_buttons_handler: # bu yerda izoh
 		not is_subscriber:
 			"Iltimos, majburiy kanallarga obuna bo'ling /*abc*/"
 			buttons: channels
-	xayr: show_alert "Sizga ham xayr"
+	xayr: show_alert: "Sizga ham xayr"

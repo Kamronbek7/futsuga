@@ -1,8 +1,8 @@
 <?php
 
-require('../includes/menu.php');
-require('../includes/main.php');
-require('../includes/guide_data.php');
+require('../../includes/menu.php');
+require('../../includes/main.php');
+require('data.php');
 
 echo $main_html . title('Guide');
 

@@ -4,7 +4,7 @@ require('../includes/menu.php');
 require('../includes/main.php');
 
 $platforms = [
-    "Windows", "Linux", "Mac OS"
+    "Windows", "Linux", "Mac OS", "Source code"
 ];
 
 echo $main_html . title('Home');?>
