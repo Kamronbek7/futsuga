@@ -63,17 +63,17 @@ sudo apt install futsuga
 ```
 
 ### Boshqa tizimlar
-| Tizim | Havola |
-|--------|--------|
-| Windows | [havola](https://futsuga.uz/download/windows) |
-| Mac OS | [havola](https://futsuga.uz/download/macos) |
+| Tizim | Havola | Video |
+|-|-|-|
+| Windows | [havola](https://futsuga.uz/download/windows) |[video]() |
+| Mac OS | [havola](https://futsuga.uz/download/macos) | [video]() |
 
 ### Rasmlar
 (None)
 
 ---
 
-## Futsuga'dan rasmlar
+## 🖼️ Futsuga'dan rasmlar
 ### Muharrir
 - CLI (qurilma terminalidagi interfeys) kodni ishga tushiruvchi
 - GUI (foydalanuvchining grafik interfeysi)ga ega IDLE (Integrallashgan o'rganish va dasturlash muhiti)
@@ -81,7 +81,7 @@ sudo apt install futsuga
 
 ### Paket va loyiha menejeri
 - CLI (fsgx)
-- GUI'ga ega Desktop paket va loyiha menejeri (fsgx)
+- GUI'ga ega Desktop paket va loyiha menejeri (fsg)
 - Veb UI paket menejeri (localhost orqali)
 
 ### VS Code uchun Futsuga extention'lari
@@ -94,22 +94,13 @@ sudo apt install futsuga
 
 ## 📦 Futsuga fayl formatlari
 
-| Fayl turi | Tavsif |
-|----------|--------|
-| `.fga` | Ochiq manba Futsuga script |
-| `.fsg` | Kutubxona fayli |
-| `.fsgz` | GZip qilingan va shifrlangan script |
-| `.fcr` | Faqat bajarish uchun mo‘ljallangan (run-only) fayl |
-| `.fsconf` | Maxfiy sozlamalar (TOKEN, ID, permissions) |
-
 | Kengaytma | Turi           | Tavsif                              |
 | --------- | -------------- | ----------------------------------- |
-| `.fga`    | Manba          | Ochiq matnli skript                 |
-| `.fsg`    | Kutubxona      | Modul yoki funksiya to‘plami        |
+| `.futs`    | Manba          | Ochiq matnli skript                 |
+| `.luts`    | Kutubxona      | Modul yoki funksiya to‘plami        |
 | `.fsgz`   | Shifrlangan    | GZip + shifrlangan versiya          |
-| `.fcr`    | Run-only       | Faqat bajarish uchun                |
+| `.fexe`    | Run-only       | Faqat bajarish uchun                |
 | `.fsconf` | Konfiguratsiya | Tokenlar, ID’lar, maxfiy sozlamalar |
-
 
 ---
 
@@ -124,7 +115,7 @@ Futsuga sizga `PDF` fayllardagi kabi mualliflik nazoratini beradi:
 
 ---
 
-## ⚙️ Misol: Oddiy .fga fayl
+## ⚙️ Misol: Oddiy `.futs` fayl
 
 ```futsuga
 commands:
@@ -134,7 +125,7 @@ commands:
 ---
 
 ## Takliflar
-Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi `en` yoki `uz` ko'rinishida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. SHuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
+Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi `en` yoki `uz` ko'rinishida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. Shuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
 
 Tushunganingiz uchun rahmat.
 

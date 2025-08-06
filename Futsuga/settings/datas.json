@@ -1,5 +1,6 @@
 {
-    "name": "futsuga",
+    "name": "Futsuga",
+    "author": "Futsuga soft",
     "version": "v1.0.0",
     "fsg_version": "FSG version: v1.0.0",
     "langs": {
@@ -16,7 +17,10 @@
         "macos": {},
         "all": {
             "packages": "$paths.system.main$/packages/",
-            "site_packages": "$paths.packages$/site-packages/"
+            "site_packages": "$paths.packages$/site-packages/",
+            "templates": "$paths.system.main$/templates/",
+            "scripts": "$paths.system.main$/scripts/",
+            "libs": "$paths.system.main$/libs/"
         }
     },
     "project": {
@@ -47,7 +51,7 @@
 
             "handlers": {
                 "files": "build/files/files.fsg",
-                "text": "build/files/text.fsg",
+                "text": "build/text.fsg",
                 "media": {
                     "photo": "build/media/photos.fsg",
                     "video": "build/media/video.fsg",
@@ -55,15 +59,15 @@
                 },
                 "chat_handlers": {
                     "main_dir": "build/requests/",
-                    "chat_join_requset": "build/requests/"
+                    "chat_join_request": "build/requests/"
                 },
                 "storage": {
                     "main_dir": "storage/",
                     "files": "storage/files/",
-                    "videos": "storage/videos",
-                    "photos": "storage/photos",
+                    "videos": "storage/videos/",
+                    "photos": "storage/photos/",
                     "audios": "storage/audios/",
-                    "others": "storage/others",
+                    "others": "storage/others/",
                     ".cache": {
                         "main_dir": "storage/.cache/",
                         "files": "storage/.cache/",
