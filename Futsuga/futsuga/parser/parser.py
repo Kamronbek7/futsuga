@@ -54,50 +54,65 @@ def generate_python_code(parsed: dict) -> str:
         lines.append("")
     return '\n'.join(lines)
 
-def remove_comments(code: str) -> str:
-    code = code.decode()
-    def remove_outside_quotes(text, pattern):
-        result = []
-        in_single = in_double = in_triple_single = in_triple_double = False
+
+def remove_comments(input_path):
+    code = ''
+    def remove_inline_comments(line):
+        # Remove # comments not inside quotes
+        in_quote = False
+        quote_char = ''
+        new_line = ''
+        i = 0
+        while i < len(line):
+            c = line[i]
+            if c in ('"', "'"):
+                if not in_quote:
+                    in_quote = True
+                    quote_char = c
+                elif quote_char == c:
+                    in_quote = False
+            if c == '#' and not in_quote:
+                break
+            new_line += c
+            i += 1
+        return new_line.rstrip()
+
+    def remove_block_comments(text):
+        # Remove /* ... */ comments, even multiline, but NOT inside quotes
+        pattern = re.compile(r'/\*.*?\*/', re.DOTALL)
+        result = ''
         i = 0
         while i < len(text):
-            ch = text[i]
-            next3 = text[i:i+3]
-            # Detect triple quotes
-            if next3 == "'''" and not in_double and not in_triple_double:
-                in_triple_single = not in_triple_single
-                i += 3
-                continue
-            elif next3 == '\"\"\"' and not in_single and not in_triple_single:
-                in_triple_double = not in_triple_double
-                i += 3
-                continue
-            elif ch == "'" and not in_double and not in_triple_double and not in_triple_single:
-                in_single = not in_single
-                i += 1
-                continue
-            elif ch == '"' and not in_single and not in_triple_double and not in_triple_single:
-                in_double = not in_double
-                i += 1
-                continue
+            m = pattern.search(text, i)
+            if not m:
+                result += text[i:]
+                break
+            before = text[:m.start()]
+            # Count quotes before block
+            double_quotes = before.count('"') - before.count('\\"')
+            single_quotes = before.count("'") - before.count("\\'")
+            # Only remove if not inside quotes
+            if double_quotes % 2 == 0 and single_quotes % 2 == 0:
+                result += text[i:m.start()]
+                i = m.end()
+            else:
+                result += text[i:m.end()]
+                i = m.end()
+        return result
 
-            if not in_single and not in_double and not in_triple_single and not in_triple_double:
-                if pattern == '#' and ch == '#':
-                    # Ignore comment till end of line
-                    while i < len(text) and text[i] != '\n':
-                        i += 1
-                    continue
-            result.append(ch)
-            i += 1
-        return ''.join(result)
+    with open(input_path, encoding='utf-8') as fin:
+        content = fin.read()
+        content = remove_block_comments(content)
+        lines = content.splitlines()
 
-    # Step 1: Remove multiline comments outside quotes
-    code = re.sub(r"(?s)(?<!['\"])\s*'''(.*?)'''", '', code)
-    code = re.sub(r'(?s)(?<!["\'])\s*"""(.*?)"""', '', code)
-
-    # Step 2: Remove # comments outside strings
-    code = remove_outside_quotes(code, '#')
-
+    # with open(output_path, 'w', encoding='utf-8') as fout:
+    for line in lines:
+        stripped = line.lstrip()
+        if stripped.startswith('#') or not stripped.strip():
+            continue
+        line_no_inline = remove_inline_comments(line)
+        if line_no_inline.strip():
+            code += line_no_inline + '\n' #fout.write(line_no_inline + '\n')
     return code
 
 class params:
@@ -192,3 +207,21 @@ if __name__ == '__main__':
     print(
         file_parser(open(r"D:\Files\1_Projects\Futsuga\_excample\src\excample.fga", 'rb'))
     )
+
+'''
+1. futs_to_json class'i
+2. Ichki parserlar:
+    * python kodni aniqlovchi
+    * o'zgaruvchilarni parse qiluvchilar
+    * asosiy bo'limlar (init, imports, ...)
+    * argumentlarni parse qiluvchilar
+    * funksiyalarni parse qiluvchilar (argumentlar bilan)
+    * tugmalarni parse qiluvchilar
+    * buyruqlarni parse qiluvchilar
+    * message_handlerlarni parse qiluvchilar
+    * is_* kabilarni parse qiluvchilar
+3. asosiy to'liq parse qiluvchi metod
+4. json'ga o'girish
+5. pythonga o'girish
+6. flaglar asosida ishga tushirish
+'''

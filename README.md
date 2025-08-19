@@ -1,5 +1,4 @@
 [O'zbek tili uchun shu havolaga bosing](README.uz.md)
-[Follow this link for English](README.md)
 
 # Futsuga 🧠✨
 
@@ -12,7 +11,7 @@
 ### For non-programmers
 - 💵 Bot development is absolutely **free**
 - ✅ **Simple structure** — no programming experience required
-- 📱 **Create a bot on your **smartphone**. Create a bot on our **Telegram bot, mini-app** or **website**
+- 📱 Create a bot on your **smartphone**. Create a bot on our **Telegram bot, mini-app** or **website**
 - 💸 **Earn money** by turning on **advertising** even in your **low-subscriber** bot
 - 🧠 **No-code / low-code** - No need to write code! Just **get** and **put**. Write code if you want
 - 🔐 **Copyright protection** (read-only, run-only, signature, encryption)
@@ -22,7 +21,7 @@
 - 📚 Manage your **packages** and **projects** **easily** and **orderly** through **Package and Project Manager** with **GUI + CLI + Web UI**
 - 🛠️ Convert to **Python, shell (for simple bots) and Rust** or **compile via Rust**
 - 📅 Create a telegram bot via **JSON**
-- 📝 Use **Python** and **PHP** code inside Fustuga
+- 📝 Use **Python** and **PHP** code inside Futsuga
 - 🌍 **Uzbek** and **English** interface, warnings and errors
 - ⛓️‍💥 Easy **debugging**.
 - 💻 **GUI + CLI + Web UI** Desktop application, package and project manager

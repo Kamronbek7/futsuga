@@ -21,7 +21,7 @@
 - 📚 **GUI + CLI + Veb UI**'ga ega **Paket va loyiha menejeri** orqali **paket** va **loyihalar**ingizni **oson** va **tartibli** boshqaring
 - 🛠️ **Python, shell (sodda botlar uchun) va Rust**ga o'giring yoki Rust orqali **kompilyatsiya qiling**
 - 📅 **JSON** orqali telegram bot tuzing
-- 📝 Fustuga ichida **Python** va **PHP** kodlaridan foydalaning
+- 📝 Futsuga ichida **Python** va **PHP** kodlaridan foydalaning
 - 🌍 **O'zbek** va **ingliz** tillaridagi interfeys, ogohlantirish va xatoliklar
 - ⛓️‍💥 Oson **debugging**.
 - 💻 **GUI + CLI + Veb UI**'ga ega Desktop ilova, paket va loyiha menejeri
@@ -131,8 +131,8 @@ Tushunganingiz uchun rahmat.
 
 ---
 
-## "Futsuga"ning ma'nosi nima?
-Ochiq yozaman: hech narsa. Shunchaki, "**Fustuga**" (Boshqa nomlar band ekan).
+## "**Futsuga**"ning ma'nosi nima?
+Ochiq yozaman: hech narsa. Shunchaki, "**Futsuga**" (Boshqa nomlar band ekan).
 Ushbu nom Yapon yoki Xitoy tiliga aloqador emas.
 
 ---
