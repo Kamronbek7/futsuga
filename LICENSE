@@ -1,26 +1,24 @@
-Futsuga License v1.0
-Copyright (c) 2025 Kamronbek
+This project is free to
+- copy
+- distribute
+- store
+- modify
+- non-commercial
+- internal commercial and
+- commercial that does not copy Futsuga
+- does not allow to write code or create noCode/lowCode bots
+- NGO that copies Futsuga
+- study
+- research
+- adapt it for your own use.
+These are not limited.
 
-Permission is hereby granted to use, modify, and share the source code of this software under the following conditions:
+No way!
+- If you change it and develop a project like Futsuga and make money from it commercially, this may cause legal problems.
+- However, if you collect funds as an NGO, this will not cause legal problems.
+- If you are building a bot development platform, Futsuga can be used in a small part of the project (30% or less).
+- Telegram bots can be used for any commercial purpose unrelated to it.
 
-1. **Non-commercial usage is allowed**, including:
-   - Personal projects
-   - Educational use
-   - Research
-   - Internal tools that are **not monetized**
+These restrictions and possibilities do not apply to the assets, invites, Examples jids in the Futsuga source code.
 
-2. **Partial commercial usage is allowed** under these strict conditions:
-   - Futsuga or its modified versions must **not be the core functionality** of a commercial product or service.
-   - The software may be used **as a component or dependency** in a larger system **where Telegram bot functionality is not the primary feature**.
-   - Examples: background analytics tool, internal notification engine, or admin dashboard.
-
-3. **Strictly prohibited:**
-   - Using the software to build Futsuga clones, competitors, or commercial Telegram bot builders.
-   - Including the software in products that offer Telegram bot development as a primary feature.
-   - Offering hosted services built primarily on Futsuga.
-
-4. Redistribution of modified versions must retain this license and attribution to the original author.
-
-For commercial licensing options outside these terms, contact kamronbek@example.com.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+If there are problems with the translation in this language, the Uzbek version will be taken into account.

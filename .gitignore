@@ -5,3 +5,6 @@ main_no_comments.fga
 _pyd_conv.sh
 _pyd_conv.cmd
 .sinov/
+*.pyd
+Website/
+st.md

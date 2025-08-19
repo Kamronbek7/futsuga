@@ -1,3 +1,5 @@
+import re
+
 def parse_futsuga_to_dict(futsuga_code: str) -> dict:
     parsed = {
         'ADMINS': [],

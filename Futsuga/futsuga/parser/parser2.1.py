@@ -179,9 +179,12 @@ class main_parser:
         for i in self.code_list:
             i = i[1:]
             if i.strip() == '':
-                return code
+                st = i.strip().split(':').strip()
+                print(f'"{st[0]}":"{st[1]}"')
+                # return code
             elif i[0] in self.tpl and i[1] in self.tpl:
                 pass  # TODO: Implement logic here
+        return code
                 
 
 def parser2(filename):
@@ -226,6 +229,8 @@ def parser2(filename):
         line_r = line.rstrip()
         # print(1 in tuple(nums.values()))
         if   line_s == '': pass
+        elif ':' == line[-1] and ' ' not in line:
+            print(line.replace(r'(*.): ', '": "'))
         elif (1 in tuple(nums.values())) and (line_r[0] in tpl): # tab bor va avvalgi qiymat 1
             # print('1 bor')
             if (line[0] in tpl): # tab bor
@@ -248,9 +253,10 @@ def parser2(filename):
 file = r"D:\Files\1_Projects\Futsuga\Examples\sample_bot\main.fga"
 # path = r"D:\Files\1_Projects\Futsuga/"
 # remove_comments(file, 'main_no_comments.fga')
-# parsed = parser2(file)#, path)
+parsed = parser2(file)#, path)
+print(main_parser(parsed))
 # print(f'{color.Fore.CYAN}{parsed}')
-print(remove_comments(file))
+# print(remove_comments(file))
 
 # with open("abc2.json", "w", encoding="utf-8") as f:
 #     json.dump(parsed, f, ensure_ascii=False, indent=4)

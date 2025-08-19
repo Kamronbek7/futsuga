@@ -1,108 +1,135 @@
 # Muhim sozlamalar
-init:
-	ADMINS:
+@cpp
+init {
+	ADMINS {
 		112029910
 		199020009
+	}
 	# TOKEN: '.env'
 	# WEBHOOK: "https://excample.com"
 	# DATABASE_FILE: None
 	INLINE: True
 	ADMIN_WARNINGS: True
 	TELEGRAM_LOG: True
-	LOGS:
+	LOGS {
 		"file.log"
 		'telegram'
 		ADMINS
+	}}
 
-imports:
+imports {
 	futsuga_ads
 	admin_panel
+}
 
 # asosiy menu
-InlineButtons:
-	menu_btns:
+InlineButtons {
+	menu_btns {
 		link: url="https://t.me/InviProgUz" -> "Salom" | xayr: callback_data -> "Xayr"
 		copy_button: '639' -> 'Nusxa olish'
 		cancel: callback_data -> 'X'
+	}
 
-	channels:
+	channels {
 		CHANNELS -> "$tr-kanal"
 		verify -> "✅ Tasdiqlash ✅"
+	}
+}
 
 # KeyboardButtons
-KeyboardButtons:
-	KeyboardButton menu:
+KeyboardButtons {
+	KeyboardButton menu {
 		buyurtma: "Buyurtma" | now: "Balans"
 		yordam: "Yordam"
+	}
+}
 
 # buyruqlar
-commands:
-	/start:
+commands {
+	/start {
 		# subcom = 132
 		reply: "Salom, botga xush kelibsiz **$user.first_name**!||1||Siz menga $subcom.1ni yubordingiz."
-		python:
+		python {
 			tp, id = $subcom.split('-')
 			return tp, id
+		}
 		reply: "$tp & $id"
+	}
 
 	/help: "Bot yordamchi buyruqlari: /start, /help: #help"
 
-	/menu:
-		reply:
+	/menu {
+		reply {
 			"Tanlang:",
 			buttons: menu
+		}
 		set_reaction: "❤️‍🔥"
+	}
 
-	/photo:
+	/photo {
 		send_photo: "https://example.com/image.jpg"
+	}
 
-	/about_bot:
-		reply:
+	/about_bot {
+		reply {
 			py.subprocess.getoutput "echo Hello"
+		}
+	}
+}
 
 # matnli xabarlar
-text:
-	~"Xayr":
+text {
+	~"Xayr" {
 		"Sizga ham xayr.",
 		buttons: menu_btns
+	}
 	"Salom": "Va alaykum salom!"
+}
 
 # admins
-admin_panel:
+admin_panel {
 	pass
+}
 
 # file handle
-files:
+files {
 	file: reply: "Siz fayl yubordingiz"
 	photo: "Siz rasm yubordingiz"
 	document: forward: $this_content
 	video: reply: 'Siz video yubordingiz'
+}
 
 # buttons
-keyboard_buttons_handler:
+keyboard_buttons_handler {
 	buyurtma: "Buyurtmani tanlash"
-	yordam:
+	yordam {
 		"Admin manzili:"
-		buttons:
+		buttons {
 			"Admin"
 			# type: url
 			url: "https://t.me/inviprog"
+		}
+	}
+}
 
 /*
 izoh
 */
 
 # callback_data
-inline_buttons_handler: # bu yerda izoh
+inline_buttons_handler { # bu yerda izoh
 	cancel: delete
 	salom: "Salom"
-	verify:
+	verify {
 		# Admin
 		is_admin: 'Obuna bo\'lishingiz /* mcn */ shart emas!'
 		# obuna bo'lgan
 		is_subscriber: "Siz obuna bo'lgansiz"
 		# obuna bo'lmagan
-		not is_subscriber:
+		not is_subscriber {
 			"Iltimos, majburiy kanallarga obuna bo'ling /*abc*/"
 			buttons: channels
+		}
+	}
 	xayr: show_alert: "Sizga ham xayr"
+}
