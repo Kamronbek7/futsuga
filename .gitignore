@@ -6,5 +6,8 @@ abc2.json
 main_no_comments.fga
 _pyd_conv.sh
 _pyd_conv.cmd
-*.pyd
 _st.md
+
+# compilated files
+*.pyd
+*.exe

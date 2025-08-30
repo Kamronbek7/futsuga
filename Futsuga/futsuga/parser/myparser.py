@@ -63,40 +63,6 @@ def remove_comments(input_path):
             code += line_no_inline + '\n' #fout.write(line_no_inline + '\n')
     return code
 
-body = [
-    'init',
-    'imports',
-    'InlineButtons',
-    'commands',
-    'text',
-    'admin_panel',
-    'files',
-    'keyboard_buttons_handler',
-    'inline_buttons_handler',
-    'chat_handlers'
-]
-
-class params:
-    admins   = 'ADMINS'
-    token    = 'TOKEN'
-    webhook  = 'WEBHOOK'
-    database = 'DATABASE'
-    inline   = 'INLINE'
-
-class buttons:
-    inline         = 'InlineButton'
-    keyboard       = 'KeyboardButton'
-    command_button = 'CommandButtons'
-
-class file_handlers:
-    file       = 'FILE'
-    photo      = 'PHOTO'
-    video      = 'video'.upper()
-    video_note = 'video_note'.upper()
-    audio      = 'AUDIO'
-
-class_to_list = lambda name: list(eval(f'{name.__name__}.{i}') for i in dir(name) if '__' not in i)
-
 def tab_counter(text, tb='\t'):
     n = 0
     for i in text:
@@ -105,95 +71,145 @@ def tab_counter(text, tb='\t'):
         else: break
     return n
 
+def char_in_text(pattern: str, text: str) -> bool:
+    inside_single = False
+    inside_double = False
+    i = 0
+    while i < len(text):
+        ch = text[i]
+
+        if ch == "'" and not inside_double:
+            inside_single = not inside_single
+        elif ch == '"' and not inside_single:
+            inside_double = not inside_double
+
+        # agar hech qanday qavs ichida emas bo‘lsa, patternni qidiramiz
+        if not inside_single and not inside_double:
+            if text[i:i+len(pattern)] == pattern:
+                return True
+        i += 1
+    return False
+
 def python_syntax(code):
     pass
 
-def how_code_cpp(line: str): # kodni {} larga ega sintaksis bilan tahlil qilish
-    if (line.strip()[-1] == '{'):     # indent
-        c = f'begin.'#.{tab_counter(line)},'
+def how_code(line: str, tp: str='py'):    # kodni {} larga ega sintaksis bilan tahlil qilish
+    if   '@cpp'    == line:     # indetlarni {} qilib belgilash
+        return    'cpp'
+    elif '@python' == line:     # sintaksisni python'dagidek qilish, funksiyalarni unga sozlash
+        return 'python'
+    
+    elif ((tp == 'cpp') and (line.strip()[-1] == '{')
+                            ) or (
+                                (tp == 'py') and (line.strip()[-1] == ':')
+                            ):     # indent
+        c = f'begin.'
         nline = line[:-1].strip()
-        if (nline in body): # body indentlar
-            return c+nline
-        elif ('is_' in line) or ('not' in line):
-            return c[:-1]+'.if,'+nline
-        else:
+
+        if (nline in body):     # body indentlar
             return c+nline
         
-    elif (line.strip() == '}') or (line.strip()[-1] == '}'): # {} by deindent
+        elif (char_in_text('is_', line)) or (char_in_text(' not ', line)): # if, else kabilar
+            return c[:-1]+'.if.'+nline
+        
+        else: return c+nline
+        
+    elif (tp == 'cpp') and ((line.strip() == '}') or (line.strip()[-1] == '}')): # {} by deindent
         c = 'end'
-        if line.strip().replace('}', '') == '':
+        if line.strip().replace('}', '') == '': # } dan boshqa narsa bor-yo'qligini tekshirish
             return c+'.'+str(tab_counter(line[::-1], '}'))
+        
+    elif ('/' == line.strip()[0]):
+        return 'command'
     
-    elif (':' in line) and (line[0] != ':') and (line[-1] != ':'): # a: b ko'rinishidagi datani o'qish
+    elif (tp == 'py') and (char_in_text(': ', line)) and (line[0] != ':') and (line[-1] != ':'): # a: b ko'rinishidagi datani o'qish
         name, _ = line.strip().split(':', 1)
-        # if isinstance(value, str): value = f'"{value}"'
-        if not name in functions:
-            return 'assign'
-        elif ' -> ' in line:
-            return 'assign_buttons'
-        else: return f'do.{name}'
+
+        if char_in_text(' -> ', line):          # tugmalarni -> bilan ajratib olish
+                if char_in_text(': ', line):    # tugma turini aniqlash
+                    return f'assign_buttons.inline.{line.split(' ', 2)[0].strip(':')}'
+                
+                return 'assign_buttons'
+        
+        elif (line.strip().split(': ')[0] in functions): return 'call_function'
+
+        elif (not char_in_text(name, functions)) or (char_in_text('is_', line)): # funksiya chaqirilmayotganini tekshirish
+            if (
+                not char_in_text(name, functions)
+            ) and (
+                char_in_text('is_', line)
+            ) and (
+                not char_in_text(' || ', line)
+            ) and (
+                not char_in_text(' -> ', line)
+            ) and (
+                not char_in_text(name, dir(file_handlers))
+            ): return 'assign'                  # o'zgaruvchi yoki belgilash kiritish
+
+            elif (char_in_text(' || ', line)) or (char_in_text(' -> ', line)):   # tugmalarni aniqlash
+                if (char_in_text(' -> ', line)):                                 # keyboard
+                    return f'assign_buttons.keyboard.{line.split(': ', 2)[0]}'
+                
+                elif (char_in_text(' -> ', line)): return f"assign_buttons.inline.{line.split(': ', 2)[0]}" # inline
+
+            elif (char_in_text('is_', line)) or (char_in_text('not', line)):     # if, else tekshiruvi
+                return 'if.' + line.split(': ')[0].strip()
+        
+        if (char_in_text(name, dir(file_handlers))) and (char_in_text(name, functions)):
+            return 'call_function'
+            
+        else: return f'call_function'
 
     else:
         try:
             a = eval(line)
-            for i in (str, float, int, tuple, dict, list, set):
+            for i in (str, float, int, tuple, dict, list, set): # qiymat kiritilayotganini tekshirish
                 if isinstance(a, i):
                     return 'value'
-        except SyntaxError:
-            if '->' in line:
+                
+        except SyntaxError:                                     # python'ga aloqasi bor-yo'qligini tekshirish
+            if char_in_text(' -> ', line):                      # tugmalarni tahlil qilish
+
+                if not char_in_text(': ', line):
+                    return f'assign_buttons.inline.{line.split(' ', 2)[0].strip(':')}'
+                
+                elif line.find(':') < line.find('->') and (not char_in_text(' -> ', line)):
+                    return f'assign_buttons.keyboard.{line.split(':', 2)[0].strip(':')}'
+                
                 return 'assign_buttons'
             
-            elif ('@cpp' == line): return '{}'    
+            elif ('pass' == line.strip()) or (char_in_text('return ', line)): return 'py_key' # py keywordlarini aniqlash
         
-            return 'unknown'
+            else:
+                if (char_in_text('py.', line)): return 'py_func' # py funksiya va kutubxona metodlarini aniqlash
+                elif (char_in_text(': ', line)) and (line.strip()[0].isalpha()):
+                    if (line.find(': ') > 1): return f'call_function.{line.find(": ")}'
+                    return 'assign' # o'zgaruvchi yoki qiymat berish
+                
+                elif (char_in_text(': ', line)) and (line.strip()[0] in ('"', "'")): return 'reply_to_text'
+
+                return 'unknown'              # noma'lum kod
+            
         except NameError:
-            if ('py.' in line) or ('pass' in line):
+            if (char_in_text('py.', line)): # py funksiyani aniqlash
                 return 'py_call'
     
             return 'call_value'
-        except Exception as e: return 'Error: ' + str(e)
-
-def how_code(line): # kodni tahlil qilish
-    tabs = tab_counter(line)
-    # tich = ':', '{'
-    c = ''
-    if   '@cpp'    == line:     # indetlarni {} qilib belgilash
-        return    'cpp'
-    elif '@python' == line:     # sintaksisni python'dagidek qilish, funksiyalarni unga sozlash
-        return 'syntax.python'
-    
-    elif   (line[-1] == ':'):                         # indent boshlanganligini aniqlash
-        c = 'begin,'
-        if (line[:-1] in body) and (line[0] != '\t'): # tana qismiga tegishli indentlar
-            return c+'body,'+line[:-1]
-    
-    elif line[0] == '\t':                             # mavjud indentni aniqlash
-        c = f'indent.{tabs},'
-        if (':' in line) and (line[0] != ':') and (line[-1] != ':'
-                                                   ): # a: b ko'rinishidagi datani o'qish
-            # name, value = line.strip().split(':', 1)
-            # if isinstance(value, str): value = f'"{value}"'
-            return c+'assign'
         
-    elif line[0] != '\t':                             # indent 0 bo'lgan holatni aniqlash
-        pass
-
-    # elif : # python yoki yo'q
-    # pass
-
-    else: return 'Unknown: ' + line
-    return c
+        except Exception as e: return 'Error: ' + str(e) # xatolik
 
 class futs_to_json:
     def __init__(self, code):
         self.code = code
         self.pydict = dict()
 
-    def python(self):
-        pass
+    def python(self, code) -> str:
+        return code
 
-    def body(self):
-        pass
+    def init(self, code):
+        data = {}
+        for i in code:
+            pass
 
     def function(self):
         pass
@@ -216,28 +232,27 @@ class futs_to_json:
     def total(self):
         pass
 
-def futs_to_py(code):
-    pycode = ''
-    datas = dict()
+def futs_to_py(code: str) -> str:
+    pass
+
+def futs_analyzer(code):
+    # pycode = ''
+    # datas = dict()
     n = 0
+    lang = 'py'
     fl = open('st.md', 'wb')
     fl.write(b'|Line|Turi|Data|\n|-|-|-|\n')
-    for line in remove_comments(r"D:\Files\1_Projects\Futsuga\Examples\sample_bot\main_cpp.fga").replace('|', '/./').split('\n'):
-        # print(dump(parse(line)))
+    for line in remove_comments(r"D:\Files\1_Projects\Futsuga\Examples\sample_bot\main.fga").replace('|', '/./').split('\n'):
         n += 1
+        res = ''
         if line.strip() == '': continue
+        else: res = how_code(line)
+        if res in ('cpp', 'py'): lang = res
         try:
-            fl.write(f'|{n}|{how_code_cpp(line)}|{line.strip()}|\n'.encode())
-            # print(how_code(line), n, '\t\t', line)
-        except IndexError as e:
-            print(e, line)
-            # fl.write(f'| {n} | Error: {e} | {line}|\n'.encode())
+            fl.write(f'|{n}|{how_code(line, lang)}|{line.strip()}|\n'.encode())
         except Exception as e:
             print(e, line)
-            # fl.write(f'| {n} | Error: {e} | {line}|\n'.encode())
-        # if line.strip() != '' and line.strip()[-1] == ':':
-        #     print(f'"{line.strip()[:-1]}":')
     fl.close()
 
 if __name__ == '__main__':
-    futs_to_py('a')
+    futs_analyzer('a')
