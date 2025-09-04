@@ -1,13 +1,35 @@
-.sinov/
-_reja/
+# dirs
+*.sinov/
+*__pycache__/
+*_reja/
 _Website/
+
+# pyinstaller dirs
+*build/
+*dist/
+*output/
+
+# files
 abc.json
 abc2.json
 main_no_comments.fga
 _pyd_conv.sh
 _pyd_conv.cmd
-_st.md
 
-# compilated files
+*futsuga.cpp
+
+# _st.md
+*st.md
+*.prompts.md
+*sinov.futs
+
+# pyinstaller builder
+*.spec
+
+# compiled files
 *.pyd
 *.exe
+*.dll
+*.so
+*.out
+*.bin
