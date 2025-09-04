@@ -1,0 +1,4 @@
+app:
+	g++ './Futsuga/futsuga/futsuga.cpp' -o './Futsuga/futsuga/futsuga'
+
+.default: app

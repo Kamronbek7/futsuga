@@ -25,21 +25,21 @@ imports {
 # asosiy menu
 InlineButtons {
 	menu_btns {
-		link: url="https://t.me/InviProgUz" -> "Salom" | xayr: callback_data -> "Xayr"
+		link: url="https://t.me/InviProgUz" -> "Salom" || xayr: callback_data -> "Xayr"
 		copy_button: '639' -> 'Nusxa olish'
-		cancel: callback_data -> 'X'
+		cancel: callback -> 'X'
 	}
 
 	channels {
-		CHANNELS -> "$tr-kanal"
-		verify -> "✅ Tasdiqlash ✅"
+		CHANNELS: $url -> "$tr-kanal"
+		verify: callback -> "✅ Tasdiqlash ✅"
 	}
 }
 
 # KeyboardButtons
 KeyboardButtons {
-	KeyboardButton menu {
-		buyurtma: "Buyurtma" | now: "Balans"
+	menu {
+		buyurtma: "Buyurtma" || now: "Balans"
 		yordam: "Yordam"
 	}
 }
@@ -73,9 +73,7 @@ commands {
 	/about_bot {
 		reply {
 			py.subprocess.getoutput "echo Hello"
-		}
-	}
-}
+}}}
 
 # matnli xabarlar
 text {
@@ -108,9 +106,7 @@ keyboard_buttons_handler {
 			"Admin"
 			# type: url
 			url: "https://t.me/inviprog"
-		}
-	}
-}
+		}}}
 
 /*
 izoh
@@ -129,7 +125,6 @@ inline_buttons_handler { # bu yerda izoh
 		not is_subscriber {
 			"Iltimos, majburiy kanallarga obuna bo'ling /*abc*/"
 			buttons: channels
-		}
-	}
+	}}
 	xayr: show_alert: "Sizga ham xayr"
 }

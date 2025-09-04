@@ -1,23 +1,14 @@
-'''if __name__ == '__main__':
-    from os.path import dirname
-    from sys import argv
-    try: dr = argv[1]
-    except IndexError: dr = dirname(__file__)
-
-    from __init__ import Translate
-    res = Translate(dr)
-    a = res.to_python()
-    print(a, "\n"+'='*30+'\n')
-    exec(a)'''
-
-from sys import argv, path, executable
+from sys import argv, path
+from telegram import Bot
+from telegram.ext import filters
+del Bot, filters
 import os
 
 path.append('/'.join(os.path.dirname(__file__.replace('\\', '/')).split('/')[:-1]))#r'D:\Files\1_Projects\Futsuga\Futsuga')
 path.append(os.path.dirname(__file__))
 
-from langs import read_data
-from datas import *
+# from langs import read_data
+# from datas import *
 
 # Main script
 
@@ -49,8 +40,6 @@ CHANGE LOCALHOSTS ADDRESSES
 {'--set-editor':{ln}}For editor.\t\t\t\tDefault: http://0.0.0.0:1
 {'--set-packs':{ln}}For package and project manager.\tDefault: http://0.0.0.0:7
 {'--set-minibot':{ln}}For helper bot.\t\t\tDefault: http://0.0.0.0:3
-{'--set-'}
-
 '''.rstrip())
 
 if __name__ == '__main__':
@@ -66,20 +55,34 @@ if __name__ == '__main__':
             from translator import translator
             exec(translator(direc))
 
-        elif func == '-v': print(datas.version)
-        elif func == '--py-version': print(datas.py_version)
-        elif (func == '-h') or (func == '--help')or (func == '--h')or (func == '/?')or (func == '?'): help()
+        # elif func == '-v': print(datas.version)
+        # elif func == '--py-version': print(datas.py_version)
+        # elif (func == '-h') or (func == '--help') or (func == '--h') or (func == '/?') or (func == '?'): help()
 
-        elif func == '--langs': print(datas.langs)
-        elif func == '--now-lang': print(datas.default_lang)
+        # elif func == '--langs': print(datas.langs)
+        # elif func == '--now-lang': print(datas.default_lang)
         
-        elif func == '--exe-file': print(executable)
+        # elif func == '--exe-file': print(executable)
 
-        elif func.split('.')[-1] == 'fga':
-            try: open(func)
-            except FileNotFoundError: print(read_data(
-                text_id='filenotfounderror', lang='uzb', kwargs={'$file': func}
-            ))
+        elif func.split('.')[-1] == 'futs':
+            try:
+                with open(func, 'rb') as fl:
+                    data = fl.read().decode()
+                from translator import ToPython
+                data = ToPython(data).get_python()
+                exec(compile(data, '<futsuga>', 'exec'))
+                # with open(f'__pycache__/{func}.py', 'w') as fl:
+                #     print(data, '='*20)
+                #     fl.write(data)
+                # from os import system
+                # system(f'python "__pycache__/{func}.py"')
+            except FileNotFoundError:
+                print('File not found.')
+            # print(read_data(
+            #     text_id='filenotfounderror', lang='uzb', kwargs={'$file': func}
+            # ))
         else: help()
 
     except IndexError: help()
+
+# nuitka --onefile --follow-imports __main__.py --include-module=telegram -o futsuga.exe --standalone

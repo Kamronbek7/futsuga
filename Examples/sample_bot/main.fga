@@ -15,25 +15,29 @@ init:
 		ADMINS
 
 imports:
-	futsuga_ads
-	admin_panel
+	futsuga_ads.
+	admin_panel*
+	download.youtube download
 
 # asosiy menu
 InlineButtons:
 	menu_btns:
-		link: url="https://t.me/InviProgUz" -> "Salom" | xayr: callback_data -> "Xayr"
-		copy_button: '639' -> 'Nusxa olish'
-		cancel: callback_data -> 'X'
+		URL: "https://t.me/InviProgUz" -> "Salom" || xayr: callback_data -> "Xayr"
+		Copy: '639' -> 'Nusxa olish'
+		cancel: callback -> 'X'
 
 	channels:
-		CHANNELS -> "$tr-kanal"
-		verify -> "✅ Tasdiqlash ✅"
+		CHANNELS: $url -> "$tr-kanal"
+		verify: callback -> "✅ Tasdiqlash ✅"
 
 # KeyboardButtons
 KeyboardButtons:
-	KeyboardButton menu:
-		buyurtma: "Buyurtma" | now: "Balans"
+	menu:
+		buyurtma: "Buyurtma" || products: "Mahsulotlar"
 		yordam: "Yordam"
+	my_account:
+		balans: 'Balans'
+		main_page: 'Asosiy sahifa'
 
 # buyruqlar
 commands:
