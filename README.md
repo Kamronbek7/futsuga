@@ -15,7 +15,7 @@
 - 💸 **Earn money** by turning on **advertising** even in your **low-subscriber** bot
 - 🧠 **No-code / low-code** - No need to write code! Just **get** and **put**. Write code if you want
 - 🔐 **Copyright protection** (read-only, run-only, signature, encryption)
-- 🤖 A simple and lightweight **bot** (on a computer) that works on your device ~~via the internet~~ (without the internet) **helping** to write a bot. **Telegram bot](https://t.me/futsugabot) for **Phone**
+- 🤖 A simple and lightweight **bot** (on a computer) that works on your device ~~via the internet~~ (without the internet) **helping** to write a bot. [Telegram bot](https://t.me/futsugabot) for **Phone**
 
 ### For Developers
 - 📚 Manage your **packages** and **projects** **easily** and **orderly** through **Package and Project Manager** with **GUI + CLI + Web UI**
