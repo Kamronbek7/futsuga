@@ -1,0 +1,129 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/futsucli.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "D:/Files/1_Projects/Futsuga/assets/imgs/futsuga-without-back.ico"
+  },
+  {
+   "optionDest": "name",
+   "value": "futsucli"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": true
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "hookspath",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram;telegram/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/ext;ext/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/request;request/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_files;_files/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_games;_games/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_inline;_inline/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_passport;_passport/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_payment;_payment/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Asus/AppData/Local/Programs/Python/Python313/Lib/site-packages/telegram/_utils;_utils/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/translator.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/__init__.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/parser;parser/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/__init__.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/datas.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Files/1_Projects/Futsuga/Futsuga/futsuga/errors.py;."
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

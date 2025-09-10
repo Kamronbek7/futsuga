@@ -1,5 +1,5 @@
 def get_default_lang():
-    import futsuga.datas as a
+    import datas as a
     return a.datas.default_lang
 
 def take_data(text_id, lang=get_default_lang(), tp='errors'):
