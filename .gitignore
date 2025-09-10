@@ -2,7 +2,6 @@
 *.sinov/
 *__pycache__/
 *_reja/
-_Website/
 
 # pyinstaller dirs
 *build/
@@ -10,15 +9,13 @@ _Website/
 *output/
 
 # files
-abc.json
-abc2.json
-main_no_comments.fga
+*main_no_comments.fga
 _pyd_conv.sh
 _pyd_conv.cmd
 
-*futsuga.cpp
+Futsuga/futsuga.cpp
 
-# _st.md
+# md & futs
 *st.md
 *.prompts.md
 *sinov.futs
