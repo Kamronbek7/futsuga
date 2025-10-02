@@ -5,9 +5,8 @@ This library will help making py file from futsuga code.
 __author__  = "Kamronbek Quchqorov"
 __version__ = "1.0.0"
 
-import build
+# import build
 import errors
-import futsuga
 import langs
 import parser
 import smart_builder

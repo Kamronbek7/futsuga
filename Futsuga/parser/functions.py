@@ -1,4 +1,5 @@
 import re
+from constantas import *
 
 def remove_comments(input_path):
     code = ''
@@ -45,10 +46,13 @@ def remove_comments(input_path):
                 i = m.end()
         return result
 
-    with open(input_path, encoding='utf-8') as fin:
-        content = fin.read()
-        content = remove_block_comments(content)
-        lines = content.splitlines()
+    if '\n' in input_path:
+        content = input_path
+    else:
+        with open(input_path, encoding='utf-8') as fin:
+            content = fin.read()
+    content = remove_block_comments(content)
+    lines = content.splitlines()
 
     # with open(output_path, 'w', encoding='utf-8') as fout:
     for line in lines:
@@ -112,3 +116,166 @@ def char_in_text(pattern: str, text: str) -> bool:
                 return True
         i += 1
     return False
+
+def equal_indenter(code):
+    tabs = []
+    new_code = ''
+    for line in code.splitlines():
+        tb = tab_counter(line)
+        if tb not in tabs:
+            tabs.append(tb)
+    min_tabs = min(tabs)
+    for line in code.splitlines():
+        lines = line.strip()
+        tb = tab_counter(line)
+        new_line = '\t'*(tb-min_tabs) + (line.strip())
+        new_code += f'\n{new_line}'
+    return new_code
+
+def how_code(line: str, block: str=None, header: str=None) -> str:
+    lines = line.strip()
+    tabs  = tab_counter(line)
+    ret   = f'{tabs}.'
+    # print(block)
+
+    if ((line.strip()[-1] == ':')
+            ) or (
+                (line.strip()[-1] == ':')
+            ):     # indent
+        c = ret + 'new.'
+        nline = line[:-1].strip()
+
+        if (nline in body):     # body indentlar
+            return f'{ret}begin.{line[:-1]}'
+        
+        # elif (char_in_text('is_', line)) or (char_in_text(' not ', line)): # if, else kabilar
+        #     return c[:-1]+'.if.'+nline
+        
+        else: return c+nline
+
+    elif ('/' == line[0]): # buyruqlarni
+        return ret + 'command'
+    
+    elif ('if' == lines[:2] or 'else' == lines[:4] or 'elif' == lines[:4]): # shartlarni
+        return ret + f'if.{lines.split(" ", 2)[0]}'
+    
+    elif (char_in_text('=', lines)): # o'zgaruvchilar
+        return ret + 'assign'
+    
+    elif (line[0] == '~' or line[0] == '"' or line[0] == "'"): # MessageHandler's
+        return ret + 'text'
+    
+    elif (char_in_text(': ', line)) and (line[0] != ':') and (line[-1] != ':'): # a: b ko'rinishidagi data
+        name, _ = line.strip().split(':', 1)
+
+        if char_in_text(' -> ', line):          # tugmalarni -> bilan ajratish
+                if char_in_text(': ', line):    # tugma turini
+                    return f'{ret}assign_buttons.inline.{line.split(' ', 2)[0].strip(':').strip()}'
+                
+                return f'{ret}assign_buttons'
+        
+        elif (line.strip().split(': ')[0] in functions): return f'{ret}call_function' # funksiya chqiruvini
+
+        elif (not char_in_text(name, functions)) or (char_in_text('is_', line)): # funksiya chaqirilmayotgani
+            if (
+                not char_in_text(name, functions)
+            # ) and (
+                # not char_in_text('is_', line)
+            ) and (
+                not char_in_text(' || ', line)
+            ) and (
+                not char_in_text(' -> ', line)
+            ) and (
+                not char_in_text(name, dir(file_handlers))
+            ):
+                if lines.strip(':') in body:
+                    return ret + 'def.' + lines.strip(':')
+                else:
+                    return ret + 'arging'                  # o'zgaruvchi yoki belgilash kiritish
+
+            elif (char_in_text(' || ', line)) or (char_in_text(' -> ', line)):   # tugmalarni aniqlash
+                if (char_in_text(' -> ', line)):                                 # keyboard
+                    return f'{ret}assign_buttons.keyboard.{line.split(': ', 2)[0]}'
+                
+                elif (char_in_text(' -> ', line)): return f"{ret}assign_buttons.inline.{line.split(': ', 2)[0]}" # inline
+
+            # elif (char_in_text('is_', line)) or (char_in_text('not', line)):     # if, else tekshiruvi
+            #     return f'{ret}if.' + line.split(': ')[0].strip()
+        
+        if (char_in_text(name, dir(file_handlers))) and (char_in_text(name, functions)):
+            return ret + 'call_function'
+            
+        else: return ret + f'call_function'
+
+    else:
+        try:
+            a = eval(line)
+            for i in (str, float, int, tuple, dict, list, set): # qiymat kiritilayotganini tekshirish
+                if isinstance(a, i):
+                    return ret + 'value'
+                
+        except SyntaxError:                                     # python'ga aloqasi bor-yo'qligini tekshirish
+            if char_in_text(' -> ', line):                      # tugmalarni tahlil qilish
+
+                if not char_in_text(': ', line):
+                    return ret + f'assign_buttons.inline.{line.split(' ', 2)[0].strip(':')}'
+                
+                elif line.find(':') < line.find('->') and (not char_in_text(' -> ', line)):
+                    return ret + f'assign_buttons.keyboard.{line.split(':', 2)[0].strip(':')}'
+                
+                return ret + 'assign_buttons'
+            
+            elif ('pass' == line.strip()) or (char_in_text('return ', line)): return ret + 'py_key' # py keywordlarini aniqlash
+        
+            else:
+                if (char_in_text('py.', line)): return ret + 'py_func' # py funksiya va kutubxona metodlarini aniqlash
+                elif (char_in_text(': ', line)) and (line.strip()[0].isalpha()):
+                    if (line.find(': ') > 1): return ret + f'call_function.{line.find(": ")}'
+                    return 'assign' # o'zgaruvchi yoki qiymat berish
+                
+                elif (char_in_text(': ', line)) and (line.strip()[0] in ('"', "'")): return ret + 'reply_to_text'
+
+                elif (lines.strip('.').split('.')[0].strip('*') in libraries):
+                    tp = ''
+                    if          lines[-1] == '.': tp = 'class'
+                    elif        lines[-1] == '*': tp = 'all'
+                    elif ' ' in lines           : tp = 'some'
+                    return ret + 'library.' + lines.strip('.').split('.')[0].strip('*') + '.' + tp
+
+                return ret + 'unknown'              # noma'lum kod
+            
+        except NameError:
+            if (char_in_text('py.', line)): # py funksiyani aniqlash
+                return ret + 'py_call'
+    
+            return     ret + 'call_value'
+        
+        except Exception as e: return ret + 'Error: ' + str(e) # xatolik
+
+def body_splitter(code):
+    old = None
+    data = {}
+    for line in code.split('\n'):
+        res = ''
+        if line.strip() == '': continue
+        else:
+            res = how_code(line, old)
+            old = res
+            indent = int(res.split('.')[0])
+
+            if   (indent == 0) and     (line[-1] == ':'):
+                data.update({line[:-1].strip(): ''})
+
+            elif (indent != 0) and not (line[-1] == ':'):
+                data[list(data)[-1]] += f'\n{line}'
+    return data
+
+def part_splitter(code) -> list:
+    parts     = {}
+    now_block = []
+    for line in code.split('\n'):
+        data = how_code(line)
+        sdata = data.split('.')
+        indent = int(sdata[0])
+        if indent == 0:
+            pass
