@@ -4,14 +4,16 @@
 *_reja/
 
 # pyinstaller dirs
-*build/
+Futsuga/build/
 *dist/
 *output/
+
+# rust dirs
+*target
 
 # files
 *main_no_comments.fga
 _pyd_conv.sh
-_pyd_conv.cmd
 
 Futsuga/futsuga.cpp
 
@@ -30,3 +32,4 @@ Futsuga/futsuga.cpp
 *.so
 *.out
 *.bin
+*.pdb

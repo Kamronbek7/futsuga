@@ -1,4 +1,4 @@
-[O'zbek tili uchun shu havolaga bosing](README.uz.md)
+[O'zbek tili uchun shu havolaga bosing](_github/README.uz.md)
 
 # Futsuga 🧠✨
 

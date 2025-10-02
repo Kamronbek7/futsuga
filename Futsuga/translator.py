@@ -18,26 +18,6 @@ class Transpiler:
             pass
         return code
 
-    '''def commands(self, json) -> None:
-        for code in json:
-
-            self.commandhandlers  += f'CommandHandler({code!a}, {code}_func)\n'
-            if not isinstance(json[code], list):
-                self.commandfunctions += f'\nasync def {code}_func(update, context):\n\tawait update.message.{code}({json[code]!a})\n'
-
-            # if   isinstance(json[code], list):
-                self.commandfunctions += f'\nasync def {code}_func(update, context):\n'
-                for commands in json[code]:
-                    for command in commands:
-                        # print(f'{json[code] = }\n{commands = }\n{command = }')
-                        self.commandfunctions += f'\tawait {command}({commands[command]!a})\n'
-
-            elif isinstance(json[code],  str):
-                # print(json[code])
-                value = json[code]
-                self.commandfunctions += f'\t{code}({value!r})\n'
-                # print(self.commandfunctions, '='*20)'''
-    
     def commands(self, commands_dict):
         functions_code = []
         handlers_code = []
@@ -184,7 +164,7 @@ class constantas:
         return self.code + f"""{self.py_init}
 
 # Main part
-app = ApplicationBuilder().token(constantas.TOKEN).build()
+app = ApplicationBuilder().token(constantas.TOKEN).parse_mode("Markdown").build()
 
 # Command functions
 {self.commandhandlers}
