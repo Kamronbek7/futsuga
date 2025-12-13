@@ -1,5 +1,5 @@
 import ast
-from functions import *
+from .functions import *
 
 def cut_parts(line: str) -> dict:
     # Split on first ':' not inside quotes
@@ -118,7 +118,7 @@ def imports(text: str) -> list:
         else: pass
     return data
 
-def parse_inline_buttons(code: str) -> dict:
+'''def parse_inline_buttons(code: str) -> dict:
     lines = [line.strip() for line in code.splitlines() if line.strip()]
     data = {}
     current_block = None
@@ -166,7 +166,7 @@ def parse_inline_buttons(code: str) -> dict:
             else:
                 data[current_block][current_name].append(parse_button_part(line))
 
-    return data
+    return data'''
 
 def parse_inline_buttons(text):
     def buttons(code):
@@ -283,9 +283,6 @@ def parse_commands(text):
                 })
     # print(commands)
     return commands
-
-def is_python(code: str) -> bool:
-    pass
 
 def variables_detector(code: str, line_number=1):
     if (

@@ -10,6 +10,9 @@ class Transpiler:
         self.commandhandlers  = '# Command Handlers\n'
         self.commandfunctions = '# Functions for Commands\n'
         
+        self.inline_buttons   = "# Inline buttons\n"
+        self.keyboard_buttons = "# Keyboard buttons\n"
+        
     def init(self, json) -> str:
         code = ''
         for value in json:
@@ -31,7 +34,7 @@ class Transpiler:
             
             for action in actions:
                 func_type = action['function']
-                text = action['text'].replace('"', '\\"').replace("'", "\\'")
+                text = action['text'].replace('"', '\"').replace("'", "\'")
                 
                 if func_type == 'reply':
                     function_lines.append(f"\tawait update.message.reply_text(\"{text}\")")
@@ -122,10 +125,10 @@ class Transpiler:
 class ToPython:
     def __init__(self, futs_code):
         self.futs_code = futs_code
-        self.     code = f'''import warnings
+        self.     code = f'''import warnings, logging
 from telegram.warnings import PTBUserWarning
-
 warnings.filterwarnings("ignore", category=PTBUserWarning)
+logging.disable(logging.CRITICAL)
 
 from telegram.ext import (
 \tCommandHandler,
@@ -134,7 +137,6 @@ from telegram.ext import (
 \tApplicationBuilder
 )
 from telegram import (
-\tBot,
 \tReplyKeyboardMarkup,
 \tInlineKeyboardButton,
 \tInlineKeyboardMarkup,
@@ -142,9 +144,7 @@ from telegram import (
 \terror
 )
 
-class constantas:
-\thtml = "HTML"
-\t# bot = Bot()\n
+class init:
 '''
         self.python = ''
 
@@ -156,15 +156,21 @@ class constantas:
         py_init = Transpiler().init(json_init)
         py_commands, py_com_funcs = Transpiler().commands(json_commands)
 
-        self.py_init     = py_init
+        self.py_init     = py_init.rstrip()
+        self.init        = json_init
         self.commandfunctions = py_com_funcs
         self.commandhandlers  = py_commands
 
     def get_python(self) -> str:
-        return self.code + f"""{self.py_init}
+        self.code += f"""{self.py_init}
 
 # Main part
-app = ApplicationBuilder().token(constantas.TOKEN).parse_mode("Markdown").build()
+app = ApplicationBuilder().token(init.TOKEN)."""
+        try:
+            if self.init['PARSE'] == 'md':
+                self.code += 'parse_mode("Markdown").'
+        except KeyError: pass
+        self.code += f"""build()
 
 # Command functions
 {self.commandhandlers}
@@ -174,10 +180,13 @@ app = ApplicationBuilder().token(constantas.TOKEN).parse_mode("Markdown").build(
 
 # self.messagehandlers
 
-try: app.run_polling()
-except error.NetworkError: print("Connection is no")
+try:
+	app.run_polling()
+except KeyboardInterrupt:
+	print('hello')
 except Exception as e: print(e)
 """
+        return self.code.rstrip()
     
 def Futsuga(file):
     pass
@@ -186,6 +195,8 @@ if __name__ == '__main__':
     from parser import remove_comments
 
     code = remove_comments("""
+init:
+    PARSE: 'md'
 /start: "Botga xush kelibsiz"
 /help: 'Siz /help\'ni bosdingiz'
 /all:

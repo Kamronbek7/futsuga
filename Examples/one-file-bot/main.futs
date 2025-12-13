@@ -3,16 +3,12 @@ init:
 	ADMINS:
 		112029910
 		199020009
-	# TOKEN: '.env'
-	# WEBHOOK: "https://excample.com"
-	# DATABASE_FILE: None
 	INLINE: True
 	ADMIN_WARNINGS: True
 	TELEGRAM_LOG: True
 	LOGS:
 		"file.log"
 		'telegram'
-		ADMINS
 
 imports:
 	futsuga_ads.

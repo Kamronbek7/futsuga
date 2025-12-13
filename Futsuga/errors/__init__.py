@@ -18,7 +18,7 @@ class ErrorsText:
     IsADirectoryError = ''
     OSError = ''
 
-class MainErrors:
+class SntaxErrors:
     def __init__(self, line, text, file, **kw):
         """
         101 - SyntaxError
@@ -29,7 +29,7 @@ class MainErrors:
         self.text = text
         self.line = line
         self.file = file
-        self.kw = kw
+        self.kw   = kw
         self.text = f'\nFile: {file!a}\n\tLine: {line}\n\t'
     
     def SyntaxError(self):
