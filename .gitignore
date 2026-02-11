@@ -4,13 +4,14 @@
 *_reja/
 *.env
 *_tmp/
+*build/
 
-Futsuga-cpp/cacert.crt
-Futsuga-cpp/include/
-Futsuga-cpp/
+Futsuga/smart_builder/
+
+*build/
+Futsuga-cpp/Python3/
 
 # pyinstaller dirs
-Futsuga/build/
 *dist/
 *output/
 
@@ -19,6 +20,8 @@ Futsuga/build/
 _pyd_conv.sh
 
 Futsuga/futsuga.cpp
+
+*example.md
 
 # md & futs
 *st.md

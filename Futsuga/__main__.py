@@ -18,24 +18,9 @@ def help(arg=None):
 {"-b":{ln}}Run in background
 {'-s <log_file_name>':{ln}}Write log any file (optional: <project_name>.log)
 
-{'TRANSLATE':{cn}}
-{'--sh':{ln}}translate to .sh  (shell)\tfile. Recommended for little bots (still there isn't)
-{'--py':{ln}}translate to .py  (Python)\tfile
-{'--rs':{ln}}translate to .rs  (Rust)\tfile. (still there isn't)
-{'--cpp':{ln}}translate to .cpp (C++)\tfile. (still there isn't)
-
 {'ABOUT':{cn}}
 {'-v':{ln}}version
-{'--py-version':{ln}}python's version
 
-{'SETTINGS':{cn}}
-{'--langs':{ln}}Show\tall\tlanguages
-{'--set-lang':{ln}}Set\tdefault\tlanguage
-{"--lang":{ln}}Show\tnow\tlanguage
-
-CHANGE LOCALHOSTS ADDRESSES
-{'--set-editor':{ln}}For editor.\t\t\t\tDefault: http://0.0.0.0:1
-{'--set-packs':{ln}}For package and project manager.\tDefault: http://0.0.0.0:7
 {'--set-minibot':{ln}}For helper bot.\t\t\tDefault: http://0.0.0.0:3
 '''.rstrip())
 
