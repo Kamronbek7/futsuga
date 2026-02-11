@@ -1,11 +1,11 @@
 from sys import argv, path
-from telegram import Bot
-from telegram.ext import filters
-del Bot, filters
+# from telegram import Bot
+# from telegram.ext import filters
+# del Bot, filters
 import os
 
 from langs import read_data
-from datas import *
+from settings import *
 
 # Main script
 
@@ -18,26 +18,16 @@ def help(arg=None):
 {"-b":{ln}}Run in background
 {'-s <log_file_name>':{ln}}Write log any file (optional: <project_name>.log)
 
-{'TRANSLATE':{cn}}
-{'--sh':{ln}}translate to .sh  (shell)\tfile. Recommended for little bots
-{'--py':{ln}}translate to .py  (Python)\tfile
-{'--rs':{ln}}translate to .rs  (Rust)\tfile
-{'--cpp':{ln}}translate to .cpp (C++)\tfile
-
 {'ABOUT':{cn}}
 {'-v':{ln}}version
-{'--py-version':{ln}}python's version
 
-{'SETTINGS':{cn}}
-{'--langs':{ln}}Show\tall\tlanguages
-{'--set-lang':{ln}}Set\tdefault\tlanguage
-{"--lang":{ln}}Show\tnow\tlanguage
-
-CHANGE LOCALHOSTS ADDRESSES
-{'--set-editor':{ln}}For editor.\t\t\t\tDefault: http://0.0.0.0:1
-{'--set-packs':{ln}}For package and project manager.\tDefault: http://0.0.0.0:7
 {'--set-minibot':{ln}}For helper bot.\t\t\tDefault: http://0.0.0.0:3
 '''.rstrip())
+
+def find_args(arg: str, args: list) -> str | None:
+    if arg in args:
+        v: int = args.index(arg)
+        return args[v+1]
 
 def main():
     # from subprocess import getoutput
@@ -58,6 +48,7 @@ def main():
 
         elif func == '--langs': print(datas.langs)
         elif func == '--now-lang': print(datas.default_lang)
+        elif func == '--test': exec(argv[2])
 
         elif func.split('.')[-1] == 'futs':
             try:
@@ -65,9 +56,25 @@ def main():
                     data = fl.read().decode()
                 from translator import ToPython
                 data = ToPython(data).get_python()
-                exec(compile(data, '<futsuga>', 'exec'))
+                if len(argv) == 2:
+                    exec(compile(data, '<futsuga>', 'exec'))
+                else:
+                    try:
+                        flags = argv[2:]
+                        if   '--py' in flags and not '-w' in flags:
+                            print(data)
+                        elif '--py' in flags and     '-w' in flags:
+                            py_path = find_args('-w', argv[2:])
+                            try:
+                                with open(py_path, 'w') as file:
+                                    file.write(data)
+                            except FileNotFoundError: print(f"Directory not found: {os.path.dirname(py_path)}")
+                            # print()
+                    except IndexError:
+                        pass
+                
             except FileNotFoundError:
-                print('File not found.')
+                # print('File not found.')
                 print(read_data(
                     text_id='filenotfounderror', lang='uzb', kwargs={'$file': func}
                 ))

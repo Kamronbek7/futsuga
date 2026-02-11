@@ -5,7 +5,7 @@ from parser import parsers
 class Transpiler:
     def __init__(self):
         self.list_data = ''
-        self
+        # self
         self.messagehandlers  = '# Message Handlers\n'
         self.commandhandlers  = '# Command Handlers\n'
         self.commandfunctions = '# Functions for Commands\n'

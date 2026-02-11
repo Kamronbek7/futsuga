@@ -1,4 +1,7 @@
 app:
-	g++ './Futsuga/futsuga/futsuga.cpp' -o './Futsuga/futsuga/futsuga'
+	g++ 'Futsuga-cpp/futsuga.cpp' -o 'Futsuga-cpp/build/futsuga.exe' -std=c++23 -Wall
+
+run:
+	Futsuga-cpp/build/futsuga.exe
 
 .default: app

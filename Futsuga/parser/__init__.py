@@ -1,7 +1,7 @@
-from constantas import *
-from functions  import *
+from .constantas import *
+from .functions  import *
 
-import parsers
+import parser.parsers as parsers
 
 # json data
 main = {
@@ -11,7 +11,7 @@ main = {
         "ADMIN_WARNINGS": True,
         "DATABASE_FILE": "dbs/main.db",
         "TELEGRAM_LOG": True,
-        "LOGS": ["ADMINS", "logs/{datetime}.log"]
+        "LOGS": ["logs/{datetime}.log"]
     },
     "imports": {}
 }

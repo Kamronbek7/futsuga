@@ -1,7 +1,8 @@
 import re
-from constantas import *
+from .constantas import *
 
 def remove_comments(input_path):
+    "kodni izohlardan tozalaydi"
     code = ''
     def remove_inline_comments(line):
         # Remove # comments not inside quotes
@@ -65,6 +66,7 @@ def remove_comments(input_path):
     return code
 
 def tab_counter(text, tb='\t'):
+    'tab larni sanaydi "    " 1 tab deb olinadi'
     n = 0
     for i in text:
         if i == tb: n += 1
@@ -76,6 +78,7 @@ def tab_counter(text, tb='\t'):
     return n
 
 def cut_word_by_char(text: str, char: str = ' ') -> list:
+    "biror belgi yoki satr bo'yicha text'ni ajratadi"
     result = []
     current = ''
     inside_single = False
@@ -99,6 +102,7 @@ def cut_word_by_char(text: str, char: str = ' ') -> list:
     return result
 
 def char_in_text(pattern: str, text: str) -> bool:
+    "bir belgi boshqasining ichida ekanligini aniqlaydi. '' ichidagi matnlar hisobga olinmaydi"
     inside_single = False
     inside_double = False
     i = 0
@@ -117,7 +121,8 @@ def char_in_text(pattern: str, text: str) -> bool:
         i += 1
     return False
 
-def equal_indenter(code):
+def indent_equalizer(code):
+    "indentlarni tekislaydi"
     tabs = []
     new_code = ''
     for line in code.splitlines():
@@ -132,11 +137,31 @@ def equal_indenter(code):
         new_code += f'\n{new_line}'
     return new_code
 
+def charintexttpl(code, chars=[
+        'return ', 'break', '=', '==', '!=',
+        '<', '>', 'def ', 'class ', 'import',
+        'from ', '+', '-', '*', '//', '**',
+        '%', 'raise ', 'lambda ', '()', '(', ')',
+        '[]', '[', ']', '{}', '{', '}', 'dict',
+        'type(', 'print', 'dir', 'for ', ' in ',
+        'if', 'else', 'elif', 'pass', 'str', 'int',
+        'tuple', 'list', '<', 'input', ':='
+        ]):
+    "code ichida chars borligini tekshirib chiqadi. Har bir belgi alohida tekshiriladi"
+    for char in chars:
+        if char_in_text(char, code):
+            return True
+    return False
+
+def is_python(code):
+    "ushbu kod pythonga tegishli ekanligini aniqlash"
+    return charintexttpl(code)
+
 def how_code(line: str, block: str=None, header: str=None) -> str:
+    "kod haqida ma'lumot beradi"
     lines = line.strip()
     tabs  = tab_counter(line)
     ret   = f'{tabs}.'
-    # print(block)
 
     if ((line.strip()[-1] == ':')
             ) or (
@@ -242,7 +267,7 @@ def how_code(line: str, block: str=None, header: str=None) -> str:
                     elif ' ' in lines           : tp = 'some'
                     return ret + 'library.' + lines.strip('.').split('.')[0].strip('*') + '.' + tp
 
-                return ret + 'unknown'              # noma'lum kod
+                return ret + str(i if is_python(line) else 'unknown')              # noma'lum kod
             
         except NameError:
             if (char_in_text('py.', line)): # py funksiyani aniqlash
@@ -253,6 +278,7 @@ def how_code(line: str, block: str=None, header: str=None) -> str:
         except Exception as e: return ret + 'Error: ' + str(e) # xatolik
 
 def body_splitter(code):
+    "kodning init, commands kabi qismlarini bo'laklarga ajratadi"
     old = None
     data = {}
     for line in code.split('\n'):
@@ -271,11 +297,27 @@ def body_splitter(code):
     return data
 
 def part_splitter(code) -> list:
-    parts     = {}
-    now_block = []
+    "kodni bo'laklarga ajratish"
+    parts      = {}
+    now_block  = []
+    old_indent = 0
+    now_code   = []
+    partnum    = 0
     for line in code.split('\n'):
         data = how_code(line)
         sdata = data.split('.')
-        indent = int(sdata[0])
-        if indent == 0:
-            pass
+        now_indent = int(sdata[0])
+        if   now_indent == old_indent:
+            print('now')
+            now_code.append(line.strip())
+        elif now_indent >  old_indent:
+            print('new')
+        elif now_indent <  old_indent:
+            print('closed')
+        elif now_indent == 0:
+            print('end block')
+            partnum += 1
+            parts.update({f'part{partnum}': '\n'.join(now_code)})
+            now_code = []
+        old_indent = now_indent
+    return parts

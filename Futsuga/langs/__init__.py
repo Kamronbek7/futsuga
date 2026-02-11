@@ -1,5 +1,5 @@
 def get_default_lang():
-    import datas as a
+    import settings as a
     return a.datas.default_lang
 
 def take_data(text_id, lang=get_default_lang(), tp='errors'):

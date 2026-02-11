@@ -4,7 +4,7 @@
 
 **Futsuga** — Telegram botlar yaratish uchun mo‘ljallangan sodda dasturlash tili. U yordamida dasturlashdan yiroq foydalanuvchilar ham kuchli botlar yaratishga qodir.
 
----
+
 
 ## ✨ Futsuga kimlar uchun?
 
@@ -26,14 +26,14 @@
 - ⛓️‍💥 Oson **debugging**.
 - 💻 **GUI + CLI + Veb UI**'ga ega Desktop ilova, paket va loyiha menejeri
 
----
+
 
 ## Kelajakdagi rejalar
 - ⚒️ Bir bosish bilan **deploy**
 - 💫 Rust / C++ orqali **yuqori tezlik** va **kamroq resurs sarfi**
 - 💵 Pulli, tasdiqlangan, bepul, ochiq **kutubxonalar**
 
----
+
 ## 📜 Litsenziya
 
 Ushbu loyiha **Futsuga License v1.0** ostida litsenziyalangan.
@@ -42,18 +42,18 @@ Ushbu loyiha **Futsuga License v1.0** ostida litsenziyalangan.
 - ❌ Futsuga'ga o'xshash platformalar yaratish uchun foydalanish mumkin emas.
 
 📬 Biznes savollar uchun: kamronbekqochqorov1@gmail.com
----
+
 
 ## Manba havolalar
 | Asosiy | O'rganish | Blog |
-|---------|----------|------|
+| - | - | - |
 | [Veb-sayt](https://futsuga.uz) | [Qo'lanma & kitoblar](https://futsuga.uz/guide) | [Telegram](https://t.me/futsuga) |
 | [Yuklab olish](https://futsuga.uz/download) | [Dasturchi bo'lmaganlar uchun](https://futsuga.uz/guide/for-scratch) | [Youtube](https://www.youtube.com/@futsuga) |
 | [FSGX paket menejeri](https://futsuga.uz/fsgx) | [Dasturchilar uchun](https://futsuga.uz/guide/for-coders) | [Instagram](https://www.instagram.com) |
 
 [VS Code uchun Extention'lar]()
 
----
+
 
 ## ⚙️ O'rnatish
 
@@ -71,7 +71,7 @@ sudo apt install futsuga
 ### Rasmlar
 (None)
 
----
+
 
 ## 🖼️ Futsuga'dan rasmlar
 ### Muharrir
@@ -90,19 +90,19 @@ sudo apt install futsuga
 
 ### JSON orqali bot yozish
 
----
+
 
 ## 📦 Futsuga fayl formatlari
 
 | Kengaytma | Turi           | Tavsif                              |
-| --------- | -------------- | ----------------------------------- |
+| - | - | - |
 | `.futs`    | Manba          | Ochiq matnli skript                 |
 | `.luts`    | Kutubxona      | Modul yoki funksiya to‘plami        |
 | `.fsgz`   | Shifrlangan    | GZip + shifrlangan versiya          |
 | `.fexe`    | Run-only       | Faqat bajarish uchun                |
 | `.fsconf` | Konfiguratsiya | Tokenlar, ID’lar, maxfiy sozlamalar |
 
----
+
 
 ## 🔑 Himoya tizimi (DRM-like)
 
@@ -113,7 +113,7 @@ Futsuga sizga `PDF` fayllardagi kabi mualliflik nazoratini beradi:
 - `runonly` – faqat ishlatish mumkin, kod yashirin
 - `signed` – RSA imzo bilan himoyalangan fayl
 
----
+
 
 ## ⚙️ Misol: Oddiy `.futs` fayl
 
@@ -122,20 +122,20 @@ commands:
     /start: "Assalomu alaykum, botga xush kelibsiz!"
 ```
 
----
+
 
 ## Takliflar
 Agar takliflaringiz bo'lsa, ularni [/invites](/invites) katalogiga *pull request* sifatida .pdf, .docx yoki .txt formatida yo'llashingiz mumkin. Faqat iltimos, fayl nomida til nomi `en` yoki `uz` ko'rinishida bo'lishi ishni osonlashtirgan bo'lar edi. Masalan, invites_1828_uz.docx. Shuningdek, [/Examples](/Examples/) katalogiga ham misol tariqasidagi takliflarni yuborishingiz mumkin.
 
 Tushunganingiz uchun rahmat.
 
----
+
 
 ## "**Futsuga**"ning ma'nosi nima?
 Ochiq yozaman: hech narsa. Shunchaki, "**Futsuga**" (Boshqa nomlar band ekan).
 Ushbu nom Yapon yoki Xitoy tiliga aloqador emas.
 
----
+
 
 ## Hissa qo'shish
 Agar loyiha sizga yoqqan bo'lsa, unga ijtimoiy tarmoqlardagi sahifalarimizga obuna bo'lish va yulduzcha bosish orqali loyiha rivojiga hissa qo'shishingiz mumkin. Ayniqsa, telegram guruhimiz o'zbek va ingliz tillarida faoliyat yuritadi. Ingliz tilidagi ma'lumotni o'qish uchun [telegramdagi ommaviy guruhimiz](https://t.me/futsuga)dagi "(en)" so'zi bor bo'lgan ixtiyoriy mavzuga kiring. Qolganlari o'zbek tilida.

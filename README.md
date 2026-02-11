@@ -4,7 +4,7 @@
 
 **Futsuga** — A simple programming language designed for creating Telegram bots. With it, even users far from programming can create powerful bots.
 
----
+
 
 ## ✨ Who is Futsuga for?
 
@@ -26,14 +26,14 @@
 - ⛓️‍💥 Easy **debugging**.
 - 💻 **GUI + CLI + Web UI** Desktop application, package and project manager
 
----
+
 
 ## Future plans
 - ⚒️ One-click **deploy**
 - 💫 **High speed** and **less resource consumption** via Rust / C++
 - 💵 Paid, verified, free, open **libraries**
 
----
+
 ## 📜 License
 
 This project is licensed under **Futsuga License v1.0**.
@@ -42,18 +42,18 @@ This project is licensed under **Futsuga License v1.0**.
 - ❌ Cannot be used to create platforms similar to futsuga.
 
 📬 For business questions: kamronbekqochqorov1@gmail.com
----
+
 
 ## Source links
 | Home | Learn | Blog |
-|--------|-----|-------|
+|-|-|-|
 | [Website](https://futsuga.uz) | [Guides & Books](https://futsuga.uz/guide) | [Telegram](https://t.me/futsuga) |
 | [Download](https://futsuga.uz/download) | [For Non-Programmers](https://futsuga.uz/guide/for-scratch) | [Youtube](https://www.youtube.com/@futsuga) |
 | [FSGX Package Manager](https://futsuga.uz/fsgx) | [For Developers](https://futsuga.uz/guide/for-coders) | [Instagram](https://www.instagram.com) |
 
 [Extentions for VS Code]()
 
----
+
 
 ## ⚙️ Installation
 
@@ -71,7 +71,7 @@ sudo apt install futsuga
 ### Images
 (None)
 
----
+
 
 ## 🖼️ Images from Futsuga
 ### Editor
@@ -90,19 +90,19 @@ sudo apt install futsuga
 
 ### Writing a Bot via JSON
 
----
+
 
 ## 📦 Futsuga File Formats
 
 | Extension | Type | Description |
-| --------- | -------------- | ----------------------------------- |
+| - | - | - |
 | `.futs` | Source | Open-source script |
 | `.luts` | Library | Module or Function Pack |
 | `.fsgz` | Encrypted | GZip + encrypted version |
 | `.fexe` | Run-only | Execution only |
 | `.fsconf` | Configuration | Tokens, IDs, secret settings |
 
----
+
 
 ## 🔑 Protection system (DRM-like)
 
@@ -113,7 +113,7 @@ Futsuga gives you author control like `PDF` files:
 - `runonly` – only runable, code hidden
 - `signed` – RSA signature protected file
 
----
+
 
 ## ⚙️ Example: A simple `.futs` file
 
@@ -122,20 +122,20 @@ commands:
 /start: "Hello, welcome to the bot!"
 ```
 
----
+
 
 ## Suggestions
 If you have suggestions, you can send them to the [/invites](/invites) directory as *pull request* in .pdf, .docx or .txt format. Please, it would be easier if the language name in the file name was `en` or `uz`. For example, invites_1828_uz.docx. You can also send example suggestions to the [/Examples](/Examples/) directory.
 
 Thank you for your understanding.
 
----
+
 
 ## What does "Futsuga" mean?
 I'll write it clearly: nothing. Just "**Futsuga**" (other names are taken).
 This name has nothing to do with Japanese or Chinese.
 
----
+
 
 ## Contribute
 If you liked the project If so, you can contribute to the development of the project by subscribing to our pages on social networks and clicking on the star. In particular, our telegram group operates in Uzbek and English. To read information in English, go to the optional topic with the word "(en)" in [our public group on telegram](https://t.me/futsuga). The rest is in Uzbek.

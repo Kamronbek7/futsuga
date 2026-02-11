@@ -13,15 +13,18 @@ body = [
     'chat_handlers'
 ]
 
-class params:
-    admin_warnings = 'admin_warnings'.upper()
-    admins   = 'ADMINS'
-    token    = 'TOKEN'
-    webhook  = 'WEBHOOK'
-    database = 'DATABASE'
-    inline   = 'INLINE'
-    logs     = 'LOGS'
-    share    = 'SHARE'
+class init_params:
+    admin_warnings = 'ADMIN_WARNINGS' # True
+    admins         = 'ADMINS'         # [112, 80999]
+    token    = 'TOKEN'       # .env
+    webhook  = 'WEBHOOK'     # True/False
+    database = 'DATABASE'    # None/File path
+    inline   = 'INLINE'      # True - if webhook is not
+    logs     = 'LOGS'        # telegram, logfile.log
+    share    = 'SHARE'       # True/False (share some datas to futsuga server)
+    parse    = 'PARSE'       # Usually, HTML. But maybe 'md'
+    platform = 'PLATFORM'    # telegram (in the future discord, vk)
+    compile  = 'COMPILE'     # False/True
 
 class buttons:
     inline         = 'InlineButton'
@@ -31,30 +34,15 @@ class buttons:
 class file_handlers:
     file       = 'FILE'
     photo      = 'PHOTO'
-    video      = 'video'.upper()
-    video_note = 'video_note'.upper()
+    video      = 'VIDEO'
+    video_note = 'VIDEO_NOTE'
     audio      = 'AUDIO'
     document   = 'DOCUMENT'
 
 class_to_list = lambda name: tuple(eval(f'{name.__name__}.{i}') for i in dir(name) if '__' not in i)
 
-# a = 'to_json to_dict de_json de_list close'.split(' ')
 functions = [i for i in dir(Bot) if (i[0]!='_' and (('send_' in i) or ('forward' in i)))]
 functions.append('reply')
-# functions.remove('to_json')
-# functions.remove('to_dict')
-# functions.remove('de_json')
-# functions.remove('de_list')
-# functions.remove('close')
-
-# b = 'create, delete, send, set, get, verify, unban, unpin, leave, hide, pin, transfer, remove, reopen, restrict, refund, promote, post, read, add, ban, base_url, bot, can, close, convert, copy, decline, edit, forward, restrict, save, username, id, link, name'.split(', ')
-# for i in functions:
-#     for j in b:
-#         if not j in i or not '_' in i:
-#             try:
-#                 functions.remove(i)
-#                 print(i)
-#             except: pass#rint(i, '\t\t', i, j)
 
 libraries = [
     'uzbeksila',

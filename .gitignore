@@ -2,14 +2,18 @@
 *.sinov/
 *__pycache__/
 *_reja/
+*.env
+*_tmp/
+*build/
+
+Futsuga/smart_builder/
+
+*build/
+Futsuga-cpp/Python3/
 
 # pyinstaller dirs
-Futsuga/build/
 *dist/
 *output/
-
-# rust dirs
-*target
 
 # files
 *main_no_comments.fga
@@ -17,10 +21,14 @@ _pyd_conv.sh
 
 Futsuga/futsuga.cpp
 
+*example.md
+
 # md & futs
 *st.md
 *.prompts.md
 *sinov.futs
+*sinov.py
+*sinov.c
 
 # pyinstaller builder
 *.spec
