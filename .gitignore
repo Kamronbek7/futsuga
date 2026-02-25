@@ -8,9 +8,6 @@
 
 Futsuga/smart_builder/
 
-*build/
-Futsuga-cpp/Python3/
-
 # pyinstaller dirs
 *dist/
 *output/
@@ -19,16 +16,13 @@ Futsuga-cpp/Python3/
 *main_no_comments.fga
 _pyd_conv.sh
 
-Futsuga/futsuga.cpp
-
 *example.md
 
 # md & futs
 *st.md
 *.prompts.md
-*sinov.futs
-*sinov.py
-*sinov.c
+*sinov.*
+*releases/
 
 # pyinstaller builder
 *.spec
