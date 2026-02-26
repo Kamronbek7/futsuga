@@ -7,6 +7,7 @@
 *build/
 
 Futsuga/smart_builder/
+Futsuga/antlr_parser/
 
 # pyinstaller dirs
 *dist/
